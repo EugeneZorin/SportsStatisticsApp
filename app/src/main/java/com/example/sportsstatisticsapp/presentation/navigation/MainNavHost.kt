@@ -1,26 +1,24 @@
 package com.example.sportsstatisticsapp.presentation.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
 import com.example.sportsstatisticsapp.presentation.MainScreen
+
+import com.example.sportsstatisticsapp.presentation.bottom.screen.SettingScreen
+import com.example.sportsstatisticsapp.presentation.bottom.screen.StatisticScreen
 
 
 @Composable
-fun MainNavHost(){
+fun MainNavHost(navController: NavHostController) {
 
-    val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = Destination.MainScreen.route ){
+    NavHost(navController = navController, startDestination = Destination.MainScreen.route) {
 
-        composable(Destination.MainScreen.route) { MainScreen(navController) }
-        composable(Destination.CreateWorkoutScreen.route) { TODO() }
-        composable(Destination.ComposeWorkoutScreen.route) { TODO() }
-        composable(Destination.CombineWorkout.route) { TODO() }
-        composable(Destination.SetCalendarScreen.route) { TODO() }
-        composable(Destination.InfoOneWorkout.route) { TODO() }
-        composable(Destination.AddNewWorkout.route) { TODO() }
+        composable(Destination.MainScreen.route){ MainScreen() }
+        composable(Destination.Statistic.route) { StatisticScreen() }
+        composable(Destination.Setting.route) { SettingScreen() }
 
     }
 }
