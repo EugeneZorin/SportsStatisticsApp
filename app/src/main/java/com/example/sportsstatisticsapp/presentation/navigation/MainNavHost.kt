@@ -5,14 +5,14 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.sportsstatisticsapp.presentation.MainScreen
-
 import com.example.sportsstatisticsapp.presentation.bottom.screen.SettingScreen
 import com.example.sportsstatisticsapp.presentation.bottom.screen.StatisticScreen
 
 
 @Composable
-fun MainNavHost(navController: NavHostController) {
-
+fun MainNavHost(
+    navController: NavHostController
+) {
 
     NavHost(navController = navController, startDestination = Destination.MainScreen.route) {
 
@@ -21,4 +21,7 @@ fun MainNavHost(navController: NavHostController) {
         composable(Destination.Setting.route) { SettingScreen() }
 
     }
+
+
 }
+

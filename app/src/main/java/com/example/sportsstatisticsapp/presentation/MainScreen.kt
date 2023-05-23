@@ -12,60 +12,38 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.BottomNavigation
-import androidx.compose.material.BottomNavigationItem
-import androidx.compose.material.Icon
-import androidx.compose.material.TopAppBar
 import androidx.compose.material.ripple.rememberRipple
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.currentBackStackEntryAsState
-import androidx.navigation.compose.rememberNavController
-import com.example.sportsstatisticsapp.R
-import com.example.sportsstatisticsapp.presentation.navigation.Destination
-import com.example.sportsstatisticsapp.presentation.navigation.MainNavHost
+import com.example.sportsstatisticsapp.presentation.bottom.colorScreen
+import com.example.sportsstatisticsapp.presentation.bottom.parameterResource
 
 
 @Composable
-fun MainScreen(){
-
-    val buttonShape = RoundedCornerShape(
-        topEnd = 15.dp, bottomStart = 15.dp, topStart = 15.dp, bottomEnd = 15.dp
-    )
-
-    val backgroundScreen = listOf(Color(0xFFE0E8F5), Color(0xFFCFDCF1))
+fun MainScreen() {
 
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxSize()
-            .background(brush = Brush.horizontalGradient(colors = backgroundScreen))
+            .background(brush = Brush.horizontalGradient(colors = colorScreen()))
     ) {
 
-        CreateWorkoutButton(buttonShape = buttonShape)
+        CreateWorkoutButton(buttonShape = parameterResource(15,15,15,15))
         Spacer(modifier = Modifier.height(34.dp))
-        FindWorkoutButton(buttonShape = buttonShape)
-
+        FindWorkoutButton(buttonShape = parameterResource(15,15,15,15))
     }
 }
 
@@ -75,18 +53,16 @@ fun CreateWorkoutButton(
 ) {
 
     val interactionSource = remember { MutableInteractionSource() }
-    var enabled by remember { mutableStateOf(true) }
 
     Box(modifier = Modifier
         .shadow(6.dp, buttonShape)
         .background(Color.White, shape = buttonShape)
         .clip(shape = buttonShape)
         .clickable(
-            enabled = enabled,
             interactionSource = interactionSource,
             indication = rememberRipple(),
         ) {
-            enabled = true
+
         }
         .padding(PaddingValues(horizontal = 40.dp, vertical = 15.dp))
 
@@ -107,24 +83,21 @@ fun FindWorkoutButton(
 ) {
 
     val interactionSource = remember { MutableInteractionSource() }
-    var enabled by remember { mutableStateOf(true) }
 
     Box(modifier = Modifier
         .shadow(6.dp, buttonShape)
         .background(Color.White, shape = buttonShape)
         .clip(shape = buttonShape)
         .clickable(
-            enabled = enabled,
             interactionSource = interactionSource,
             indication = rememberRipple(),
         ) {
-            enabled = true
         }
         .padding(PaddingValues(horizontal = 40.dp, vertical = 15.dp))
 
     ) {
         Text(
-            text = "Create a Workout",
+            text = "Find a Workout",
             fontSize = 26.sp,
             color = Color.Black,
             fontWeight = FontWeight.Bold,
@@ -132,7 +105,6 @@ fun FindWorkoutButton(
         )
     }
 }
-
 
 
 @Preview(showBackground = true)
