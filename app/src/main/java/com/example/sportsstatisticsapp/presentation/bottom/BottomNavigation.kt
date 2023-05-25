@@ -22,11 +22,15 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.sportsstatisticsapp.R
 import com.example.sportsstatisticsapp.presentation.constants.Constants.TITLE_MAIN_SCREEN
 import com.example.sportsstatisticsapp.presentation.navigation.Destination
 import com.example.sportsstatisticsapp.presentation.navigation.MainNavHost
@@ -108,11 +112,16 @@ fun AddItem(
                         launchSingleTop = true
                     }
                 })
-                .padding(PaddingValues(horizontal = 30.dp, vertical = 7.dp)),
+                .padding(PaddingValues(horizontal = 34.dp, vertical = 11.dp)),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(4.dp)
         ) {
-            Text(text = item.title)
+            Text(
+                text = item.title,
+                fontSize = 18.sp,
+                color = colorResource(id = R.color.lightGray),
+                fontWeight = FontWeight.Bold
+            )
         }
     } else {
 

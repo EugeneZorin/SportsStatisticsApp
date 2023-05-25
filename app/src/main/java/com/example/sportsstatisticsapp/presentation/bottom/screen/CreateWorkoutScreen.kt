@@ -1,4 +1,4 @@
-package com.example.sportsstatisticsapp.presentation
+package com.example.sportsstatisticsapp.presentation.bottom.screen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -30,9 +30,10 @@ import com.example.sportsstatisticsapp.presentation.bottom.colorScreen
 import com.example.sportsstatisticsapp.presentation.bottom.parameterResource
 import com.example.sportsstatisticsapp.presentation.navigation.Destination
 
-
 @Composable
-fun MainScreen(navController: NavHostController) {
+fun CreateWorkoutScreen(
+    navController: NavHostController
+) {
 
     Column(
         verticalArrangement = Arrangement.Center,
@@ -42,20 +43,31 @@ fun MainScreen(navController: NavHostController) {
             .background(brush = Brush.horizontalGradient(colors = colorScreen()))
     ) {
 
-        CreateWorkoutButton(
+
+        ComposeWorkout(
             buttonShape = parameterResource(15,15,15,15),
-            navController = navController
+            navController
         )
+
         Spacer(modifier = Modifier.height(34.dp))
-        FindWorkoutButton(
+
+        CombineWorkout(
             buttonShape = parameterResource(15,15,15,15),
-            navController = navController
+            navController
         )
+
+        Spacer(modifier = Modifier.height(34.dp))
+
+        FindWorkoutButtonSecondScreen(
+            buttonShape = parameterResource(15,15,15,15),
+            navController
+        )
+
     }
 }
 
 @Composable
-fun CreateWorkoutButton(
+fun ComposeWorkout(
     buttonShape: RoundedCornerShape,
     navController: NavHostController
 ) {
@@ -70,14 +82,14 @@ fun CreateWorkoutButton(
             interactionSource = interactionSource,
             indication = rememberRipple(),
         ) {
-            navController.navigate(Destination.CreateWorkout.route)
+            TODO()
         }
         .padding(PaddingValues(horizontal = 40.dp, vertical = 15.dp)),
 
 
-    ) {
+        ) {
         Text(
-            text = "Create a Workout",
+            text = "Compose a Workout",
             fontSize = 26.sp,
             color = Color.Black,
             fontWeight = FontWeight.Bold,
@@ -87,7 +99,39 @@ fun CreateWorkoutButton(
 }
 
 @Composable
-fun FindWorkoutButton(
+fun CombineWorkout(
+    buttonShape: RoundedCornerShape,
+    navController: NavHostController
+) {
+
+    val interactionSource = remember { MutableInteractionSource() }
+
+    Box(modifier = Modifier
+        .shadow(6.dp, buttonShape)
+        .background(Color.White, shape = buttonShape)
+        .clip(shape = buttonShape)
+        .clickable(
+            interactionSource = interactionSource,
+            indication = rememberRipple(),
+        ) {
+            TODO()
+        }
+        .padding(PaddingValues(horizontal = 40.dp, vertical = 15.dp)),
+
+
+        ) {
+        Text(
+            text = "  Combine Workout  ",
+            fontSize = 26.sp,
+            color = Color.Black,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.align(Alignment.Center)
+        )
+    }
+}
+
+@Composable
+fun FindWorkoutButtonSecondScreen(
     buttonShape: RoundedCornerShape,
     navController: NavHostController
 ) {
@@ -108,7 +152,7 @@ fun FindWorkoutButton(
 
     ) {
         Text(
-            text = "  Find a Workout  ",
+            text = "     Find a Workout    ",
             fontSize = 26.sp,
             color = Color.Black,
             fontWeight = FontWeight.Bold,
@@ -116,4 +160,3 @@ fun FindWorkoutButton(
         )
     }
 }
-
