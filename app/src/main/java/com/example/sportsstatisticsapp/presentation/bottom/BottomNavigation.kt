@@ -12,68 +12,99 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.BottomNavigation
+import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material3.Card
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.example.sportsstatisticsapp.R
+import com.example.sportsstatisticsapp.presentation.constants.Constants.ROUT_MAIN_SCREEN
+import com.example.sportsstatisticsapp.presentation.constants.Constants.ROUT_SETTING
 import com.example.sportsstatisticsapp.presentation.constants.Constants.TITLE_MAIN_SCREEN
 import com.example.sportsstatisticsapp.presentation.navigation.Destination
-import com.example.sportsstatisticsapp.presentation.navigation.MainNavHost
+
+data class NavItem(
+    val route: String,
+    val title: String,
+    var selected: Boolean = false
+)
 
 @Composable
-fun BottomNavigationBarScreen() {
-
-    val navController = rememberNavController()
-
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(brush = Brush.horizontalGradient(colors = colorScreen()))
-    ) {
-
-        Card(
-            Modifier
-                .fillMaxHeight(0.985f)
-                .background(Color.White, shape = parameterResource(0, 0, 0, 0))
-                .clip(parameterResource(0, 0, 0, 0))
-        ) {
-            Scaffold(
-                bottomBar = { BottomBar(navController = navController) }
-            ) { padding ->
-                Box(modifier = Modifier.padding(padding)) {
-                    MainNavHost(navController = navController)
-                }
-            }
-        }
-    }
-
-}
-
-@Composable
-fun BottomBar(
+fun BottomNavigationBarScreen(
     navController: NavHostController
 ) {
 
-    val items = listOf(
-        Destination.Setting,
-        Destination.MainScreen,
-        Destination.Statistic
-    )
+    val navItems = remember { mutableStateListOf<NavItem>() }
+    val currentRoute = navController.currentBackStackEntry?.destination?.route ?: ""
+
+    LaunchedEffect(currentRoute) {
+        // Add your logic here to determine the new set of navItems based on the current route
+        val newNavItems = when (currentRoute) {
+            ROUT_MAIN_SCREEN -> listOf(
+                NavItem(Destination.Setting.route, Destination.Setting.title),
+                NavItem(Destination.MainScreen.route, Destination.MainScreen.title),
+                NavItem(Destination.Statistic.route, Destination.Statistic.title)
+            )
+
+            ROUT_SETTING -> listOf(
+                NavItem(Destination.Setting.route, Destination.Setting.title),
+                NavItem(Destination.MainScreen.route, Destination.MainScreen.title),
+                NavItem(Destination.Statistic.route, Destination.Statistic.title)
+            )
+
+            else -> listOf(
+                NavItem(Destination.Setting.route, Destination.Setting.title),
+            )
+        }
+        navItems.clear()
+        navItems.addAll(newNavItems)
+    }
+
+
+    Box(
+        modifier = Modifier
+            .background(brush = Brush.horizontalGradient(colors = colorScreen()))
+    ) {
+
+        Box(
+            Modifier
+                .background(Color.White, shape = parameterResource(0, 0, 0, 0))
+                .clip(parameterResource(0, 0, 0, 0))
+        ) {
+            BottomBar(
+                navController = navController,
+                currentRoute = currentRoute,
+                navItems = navItems
+            )
+        }
+    }
+}
+
+
+@Composable
+fun BottomBar(
+    navController: NavHostController,
+    currentRoute: String,
+    navItems: SnapshotStateList<NavItem>
+) {
 
     Row(
         modifier = Modifier
@@ -82,19 +113,26 @@ fun BottomBar(
         horizontalArrangement = Arrangement.SpaceEvenly,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        items.forEach { item ->
-            AddItem(
-                item = item,
-                navController = navController
-            )
+        BottomNavigation {
+            navItems.forEach { item ->
+                BottomNavigationItem(
+                    icon = {},
+                    label = { AddItem(item, navController) },
+                    selected = item.route == currentRoute,
+                    onClick = {
+                        navController.navigate(item.route) {
+
+                        }
+                    }
+                )
+            }
         }
     }
-
 }
 
 @Composable
 fun AddItem(
-    item: Destination,
+    item: NavItem,
     navController: NavHostController,
 ) {
 
@@ -142,14 +180,10 @@ fun AddItem(
                 })
                 .padding(PaddingValues(horizontal = 30.dp, vertical = 30.dp)),
 
-        ) {
+            ) {
 
         }
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun BottomNavigationBarPreview() {
-    BottomNavigationBarScreen()
-}
+

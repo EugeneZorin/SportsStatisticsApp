@@ -26,6 +26,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.example.sportsstatisticsapp.presentation.bottom.BottomNavigationBarScreen
 import com.example.sportsstatisticsapp.presentation.bottom.colorScreen
 import com.example.sportsstatisticsapp.presentation.bottom.parameterResource
 import com.example.sportsstatisticsapp.presentation.navigation.Destination
@@ -51,7 +52,11 @@ fun MainScreen(navController: NavHostController) {
             buttonShape = parameterResource(15,15,15,15),
             navController = navController
         )
+
     }
+
+    BottomNavigationBarScreen(navController)
+
 }
 
 @Composable

@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import com.example.sportsstatisticsapp.presentation.bottom.BottomNavigationBarScreen
+import com.example.sportsstatisticsapp.presentation.navigation.MainNavHost
 
 
 class MainActivity : ComponentActivity() {
@@ -11,7 +12,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            BottomNavigationBarScreen()
+            MainNavHost()
         }
     }
 }
