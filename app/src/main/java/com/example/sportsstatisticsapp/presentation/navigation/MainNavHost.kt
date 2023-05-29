@@ -13,9 +13,7 @@ import com.example.sportsstatisticsapp.presentation.bottom.screen.StatisticScree
 
 
 @Composable
-fun MainNavHost(
-
-) {
+fun MainNavHost() {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = Destination.MainScreen.route) {
 

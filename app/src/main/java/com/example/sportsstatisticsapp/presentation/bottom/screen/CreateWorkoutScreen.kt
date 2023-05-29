@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -26,6 +27,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.example.sportsstatisticsapp.presentation.CreateWorkoutButton
+import com.example.sportsstatisticsapp.presentation.FindWorkoutButton
+import com.example.sportsstatisticsapp.presentation.bottom.BottomNavigationBarScreen
 import com.example.sportsstatisticsapp.presentation.bottom.colorScreen
 import com.example.sportsstatisticsapp.presentation.bottom.parameterResource
 import com.example.sportsstatisticsapp.presentation.navigation.Destination
@@ -35,36 +39,49 @@ fun CreateWorkoutScreen(
     navController: NavHostController
 ) {
 
-    Column(
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier
-            .fillMaxSize()
-            .background(brush = Brush.horizontalGradient(colors = colorScreen()))
+    Box(
+        modifier = Modifier.fillMaxSize()
     ) {
 
+        Column(
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .fillMaxSize()
+                .background(brush = Brush.horizontalGradient(colors = colorScreen()))
+        ) {
 
-        ComposeWorkout(
-            buttonShape = parameterResource(15,15,15,15),
-            navController
-        )
+            ComposeWorkout(
+                buttonShape = parameterResource(15,15,15,15),
+                navController
+            )
 
-        Spacer(modifier = Modifier.height(34.dp))
+            Spacer(modifier = Modifier.height(34.dp))
 
-        CombineWorkout(
-            buttonShape = parameterResource(15,15,15,15),
-            navController
-        )
+            CombineWorkout(
+                buttonShape = parameterResource(15,15,15,15),
+                navController
+            )
 
-        Spacer(modifier = Modifier.height(34.dp))
+            Spacer(modifier = Modifier.height(34.dp))
 
-        FindWorkoutButtonSecondScreen(
-            buttonShape = parameterResource(15,15,15,15),
-            navController
-        )
+            FindWorkoutButtonSecondScreen(
+                buttonShape = parameterResource(15,15,15,15),
+                navController
+            )
+        }
+
+        Row(
+            modifier = Modifier
+                .background(Color.White, shape = parameterResource(0, 0, 0, 0))
+                .align(Alignment.BottomCenter)
+        ) {
+            BottomNavigationBarScreen(navController = navController)
+        }
 
     }
 }
+
 
 @Composable
 fun ComposeWorkout(

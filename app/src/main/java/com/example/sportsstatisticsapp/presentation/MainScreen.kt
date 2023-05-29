@@ -7,12 +7,14 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ripple.rememberRipple
+import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -26,6 +28,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.example.sportsstatisticsapp.presentation.bottom.BottomBar
 import com.example.sportsstatisticsapp.presentation.bottom.BottomNavigationBarScreen
 import com.example.sportsstatisticsapp.presentation.bottom.colorScreen
 import com.example.sportsstatisticsapp.presentation.bottom.parameterResource
@@ -33,29 +36,43 @@ import com.example.sportsstatisticsapp.presentation.navigation.Destination
 
 
 @Composable
-fun MainScreen(navController: NavHostController) {
+fun MainScreen(
+    navController: NavHostController
+) {
 
-    Column(
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier
-            .fillMaxSize()
-            .background(brush = Brush.horizontalGradient(colors = colorScreen()))
+
+    Box(
+        modifier = Modifier.fillMaxSize()
     ) {
 
-        CreateWorkoutButton(
-            buttonShape = parameterResource(15,15,15,15),
-            navController = navController
-        )
-        Spacer(modifier = Modifier.height(34.dp))
-        FindWorkoutButton(
-            buttonShape = parameterResource(15,15,15,15),
-            navController = navController
-        )
+        Column(
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .fillMaxSize()
+                .background(brush = Brush.horizontalGradient(colors = colorScreen()))
+        ) {
+            CreateWorkoutButton(
+                buttonShape = parameterResource(15,15,15,15),
+                navController = navController
+            )
 
+            Spacer(modifier = Modifier.height(34.dp))
+
+            FindWorkoutButton(
+                buttonShape = parameterResource(15,15,15,15),
+                navController = navController
+            )
+        }
+
+        Row(
+            modifier = Modifier
+                .background(Color.White, shape = parameterResource(0, 0, 0, 0))
+                .align(Alignment.BottomCenter)
+        ) {
+            BottomNavigationBarScreen(navController = navController)
+        }
     }
-
-    BottomNavigationBarScreen(navController)
 
 }
 
