@@ -66,7 +66,7 @@ fun MainScreen(
         Row(
             modifier = Modifier
                 .background(Color.White, shape = parameterResource(0, 0, 0, 0))
-                .align(Alignment.BottomCenter)
+                .align(Alignment.BottomStart)
         ) {
 
             ItemsBottomNavigation(navController = navController)
@@ -80,7 +80,7 @@ fun MainScreen(
                 modifier = Modifier
                     .align(Alignment.BottomCenter)
             ) {
-                Rhombus(colorScreen(), "")
+                Rhombus(colorScreen(), navController)
             }
         }
 

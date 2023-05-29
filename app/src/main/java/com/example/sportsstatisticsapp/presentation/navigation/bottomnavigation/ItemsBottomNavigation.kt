@@ -21,13 +21,11 @@ fun ItemsBottomNavigation(
         val newNavItems = when (currentRoute) {
             Constants.ROUT_MAIN_SCREEN -> listOf(
                 NavigationItems(Destination.Setting.route, Destination.Setting.title),
-                NavigationItems(Destination.MainScreen.route, Destination.MainScreen.title),
                 NavigationItems(Destination.Statistic.route, Destination.Statistic.title)
             )
 
             Constants.ROUT_CREATE_WORKOUT -> listOf(
                 NavigationItems(Destination.Setting.route, Destination.Setting.title),
-                NavigationItems(Destination.MainScreen.route, Destination.MainScreen.title),
                 NavigationItems(Destination.Statistic.route, Destination.Setting.title)
             )
 
