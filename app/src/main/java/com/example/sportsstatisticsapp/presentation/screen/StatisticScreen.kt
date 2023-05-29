@@ -1,4 +1,4 @@
-package com.example.sportsstatisticsapp.presentation.bottom.screen
+package com.example.sportsstatisticsapp.presentation.screen
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize

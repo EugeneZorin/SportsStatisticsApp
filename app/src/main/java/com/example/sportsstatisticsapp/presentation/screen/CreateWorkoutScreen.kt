@@ -1,4 +1,4 @@
-package com.example.sportsstatisticsapp.presentation.bottom.screen
+package com.example.sportsstatisticsapp.presentation.screen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -27,12 +27,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.example.sportsstatisticsapp.presentation.CreateWorkoutButton
-import com.example.sportsstatisticsapp.presentation.FindWorkoutButton
-import com.example.sportsstatisticsapp.presentation.bottom.BottomNavigationBarScreen
-import com.example.sportsstatisticsapp.presentation.bottom.colorScreen
-import com.example.sportsstatisticsapp.presentation.bottom.parameterResource
+import com.example.sportsstatisticsapp.presentation.navigation.colorScreen
+import com.example.sportsstatisticsapp.presentation.navigation.parameterResource
 import com.example.sportsstatisticsapp.presentation.navigation.Destination
+import com.example.sportsstatisticsapp.presentation.navigation.bottomnavigation.ItemsBottomNavigation
 
 @Composable
 fun CreateWorkoutScreen(
@@ -76,7 +74,7 @@ fun CreateWorkoutScreen(
                 .background(Color.White, shape = parameterResource(0, 0, 0, 0))
                 .align(Alignment.BottomCenter)
         ) {
-            BottomNavigationBarScreen(navController = navController)
+            ItemsBottomNavigation(navController = navController)
         }
 
     }

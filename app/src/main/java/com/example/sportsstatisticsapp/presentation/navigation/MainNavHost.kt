@@ -1,15 +1,14 @@
 package com.example.sportsstatisticsapp.presentation.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.sportsstatisticsapp.presentation.MainScreen
-import com.example.sportsstatisticsapp.presentation.bottom.screen.CreateWorkoutScreen
-import com.example.sportsstatisticsapp.presentation.bottom.screen.FindWorkoutScreen
-import com.example.sportsstatisticsapp.presentation.bottom.screen.SettingScreen
-import com.example.sportsstatisticsapp.presentation.bottom.screen.StatisticScreen
+import com.example.sportsstatisticsapp.presentation.screen.MainScreen
+import com.example.sportsstatisticsapp.presentation.screen.CreateWorkoutScreen
+import com.example.sportsstatisticsapp.presentation.screen.FindWorkoutScreen
+import com.example.sportsstatisticsapp.presentation.screen.SettingScreen
+import com.example.sportsstatisticsapp.presentation.screen.StatisticScreen
 
 
 @Composable

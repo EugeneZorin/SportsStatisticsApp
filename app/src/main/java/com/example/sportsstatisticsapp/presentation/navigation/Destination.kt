@@ -25,7 +25,6 @@ sealed class Destination(var route: String,var title: String) {
     object CreateWorkout: Destination(ROUT_CREATE_WORKOUT, TITLE_CREATE_WORKOUT)
     object FindWorkout: Destination(ROUT_FIND_WORKOUT, TITLE_FIND_WORKOUT)
     object ComposeWorkout: Destination(ROUT_COMPOSE_WORKOUT, TITLE_COMPOSE_WORKOUT)
-
     object BackComposeWorkout: Destination(ROUT_BACK_CW, TITLE_BACK_CW)
     object NextComposeWorkout: Destination(TITLE_NEXT_CW, ROUT_NEXT_CW)
 

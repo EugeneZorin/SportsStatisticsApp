@@ -1,4 +1,4 @@
-package com.example.sportsstatisticsapp.presentation.bottom
+package com.example.sportsstatisticsapp.presentation.navigation
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable

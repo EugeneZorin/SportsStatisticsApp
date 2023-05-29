@@ -1,4 +1,4 @@
-package com.example.sportsstatisticsapp.presentation
+package com.example.sportsstatisticsapp.presentation.screen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ripple.rememberRipple
-import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -28,18 +27,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.example.sportsstatisticsapp.presentation.bottom.BottomBar
-import com.example.sportsstatisticsapp.presentation.bottom.BottomNavigationBarScreen
-import com.example.sportsstatisticsapp.presentation.bottom.colorScreen
-import com.example.sportsstatisticsapp.presentation.bottom.parameterResource
+import com.example.sportsstatisticsapp.presentation.navigation.colorScreen
+import com.example.sportsstatisticsapp.presentation.navigation.bottomnavigation.Rhombus
 import com.example.sportsstatisticsapp.presentation.navigation.Destination
+import com.example.sportsstatisticsapp.presentation.navigation.bottomnavigation.ItemsBottomNavigation
+import com.example.sportsstatisticsapp.presentation.navigation.parameterResource
 
 
 @Composable
 fun MainScreen(
     navController: NavHostController
 ) {
-
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -70,8 +68,22 @@ fun MainScreen(
                 .background(Color.White, shape = parameterResource(0, 0, 0, 0))
                 .align(Alignment.BottomCenter)
         ) {
-            BottomNavigationBarScreen(navController = navController)
+
+            ItemsBottomNavigation(navController = navController)
         }
+
+
+        Box(
+            modifier = Modifier.fillMaxSize()
+        ) {
+            Box(
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+            ) {
+                Rhombus(colorScreen(), "")
+            }
+        }
+
     }
 
 }
