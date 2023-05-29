@@ -26,7 +26,7 @@ fun ItemsBottomNavigation(
 
             Constants.ROUT_CREATE_WORKOUT -> listOf(
                 NavigationItems(Destination.Setting.route, Destination.Setting.title),
-                NavigationItems(Destination.Statistic.route, Destination.Setting.title)
+                NavigationItems(Destination.Statistic.route, Destination.Statistic.title)
             )
 
             else -> listOf(

@@ -135,7 +135,7 @@ fun Rhombus(
                 indication = rememberRipple(),
             ) {
                 clicked = !clicked
-                navController.navigate(Destination.Setting.route)
+                    navController.navigate(Destination.MainScreen.route)
             }
 
             .background(

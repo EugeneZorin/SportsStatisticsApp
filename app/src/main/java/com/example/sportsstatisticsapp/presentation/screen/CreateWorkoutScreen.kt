@@ -30,7 +30,9 @@ import androidx.navigation.NavHostController
 import com.example.sportsstatisticsapp.presentation.navigation.colorScreen
 import com.example.sportsstatisticsapp.presentation.navigation.parameterResource
 import com.example.sportsstatisticsapp.presentation.navigation.Destination
+import com.example.sportsstatisticsapp.presentation.navigation.bottomnavigation.BottomPanel
 import com.example.sportsstatisticsapp.presentation.navigation.bottomnavigation.ItemsBottomNavigation
+import com.example.sportsstatisticsapp.presentation.navigation.bottomnavigation.Rhombus
 
 @Composable
 fun CreateWorkoutScreen(
@@ -69,16 +71,12 @@ fun CreateWorkoutScreen(
             )
         }
 
-        Row(
-            modifier = Modifier
-                .background(Color.White, shape = parameterResource(0, 0, 0, 0))
-                .align(Alignment.BottomCenter)
-        ) {
-            ItemsBottomNavigation(navController = navController)
-        }
+        BottomPanel( navController = navController )
+
 
     }
 }
+
 
 
 @Composable

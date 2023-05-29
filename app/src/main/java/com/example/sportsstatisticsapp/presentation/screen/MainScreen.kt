@@ -30,6 +30,7 @@ import androidx.navigation.NavHostController
 import com.example.sportsstatisticsapp.presentation.navigation.colorScreen
 import com.example.sportsstatisticsapp.presentation.navigation.bottomnavigation.Rhombus
 import com.example.sportsstatisticsapp.presentation.navigation.Destination
+import com.example.sportsstatisticsapp.presentation.navigation.bottomnavigation.BottomPanel
 import com.example.sportsstatisticsapp.presentation.navigation.bottomnavigation.ItemsBottomNavigation
 import com.example.sportsstatisticsapp.presentation.navigation.parameterResource
 
@@ -63,27 +64,7 @@ fun MainScreen(
             )
         }
 
-        Row(
-            modifier = Modifier
-                .background(Color.White, shape = parameterResource(0, 0, 0, 0))
-                .align(Alignment.BottomStart)
-        ) {
-
-            ItemsBottomNavigation(navController = navController)
-        }
-
-
-        Box(
-            modifier = Modifier.fillMaxSize()
-        ) {
-            Box(
-                modifier = Modifier
-                    .align(Alignment.BottomCenter)
-            ) {
-                Rhombus(colorScreen(), navController)
-            }
-        }
-
+        BottomPanel( navController = navController )
     }
 
 }
