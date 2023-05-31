@@ -17,10 +17,10 @@ fun MainNavHost() {
     NavHost(navController = navController, startDestination = Destination.MainScreen.route) {
 
         composable(Destination.MainScreen.route){ MainScreen( navController = navController ) }
-        composable(Destination.Statistic.route) { StatisticScreen() }
-        composable(Destination.Setting.route) { SettingScreen() }
+        composable(Destination.Statistic.route) { StatisticScreen( navController = navController ) }
+        composable(Destination.Setting.route) { SettingScreen( navController = navController ) }
         composable(Destination.CreateWorkout.route) { CreateWorkoutScreen( navController = navController ) }
-        composable(Destination.FindWorkout.route) { FindWorkoutScreen() }
+        composable(Destination.FindWorkout.route) { FindWorkoutScreen( navController = navController ) }
 
     }
 }

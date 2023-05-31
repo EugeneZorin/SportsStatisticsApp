@@ -2,6 +2,7 @@ package com.example.sportsstatisticsapp.presentation.screen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,21 +12,30 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import com.example.sportsstatisticsapp.presentation.navigation.bottomnavigation.BottomPanel
 import com.example.sportsstatisticsapp.presentation.navigation.colorScreen
+import com.example.sportsstatisticsapp.presentation.navigation.parameterResource
 
 @Composable
-fun FindWorkoutScreen() {
+fun FindWorkoutScreen(
+    navController: NavHostController
+) {
 
-    Column(
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier
-            .fillMaxSize()
-            .background(brush = Brush.horizontalGradient(colors = colorScreen()))
+    Box(
+        modifier = Modifier.fillMaxSize()
     ) {
 
+        Column(
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .fillMaxSize()
+                .background(brush = Brush.horizontalGradient(colors = colorScreen()))
+        ) {
 
-        Spacer(modifier = Modifier.height(34.dp))
+        }
 
+        BottomPanel( navController = navController )
     }
 }

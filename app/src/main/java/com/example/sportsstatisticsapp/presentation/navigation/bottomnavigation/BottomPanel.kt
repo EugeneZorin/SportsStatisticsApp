@@ -13,7 +13,9 @@ import com.example.sportsstatisticsapp.presentation.navigation.colorScreen
 import com.example.sportsstatisticsapp.presentation.navigation.parameterResource
 
 @Composable
-fun BottomPanel (navController: NavHostController){
+fun BottomPanel (
+    navController: NavHostController
+){
 
     Box(){
         Row(
