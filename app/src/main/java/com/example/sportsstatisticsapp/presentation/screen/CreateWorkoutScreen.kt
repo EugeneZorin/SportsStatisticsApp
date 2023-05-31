@@ -95,7 +95,7 @@ fun ComposeWorkout(
             interactionSource = interactionSource,
             indication = rememberRipple(),
         ) {
-            TODO()
+            navController.navigate(Destination.ComposeWorkout.route)
         }
         .padding(PaddingValues(horizontal = 40.dp, vertical = 15.dp)),
 

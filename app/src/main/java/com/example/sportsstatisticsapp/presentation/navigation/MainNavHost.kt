@@ -9,6 +9,8 @@ import com.example.sportsstatisticsapp.presentation.screen.CreateWorkoutScreen
 import com.example.sportsstatisticsapp.presentation.screen.FindWorkoutScreen
 import com.example.sportsstatisticsapp.presentation.screen.SettingScreen
 import com.example.sportsstatisticsapp.presentation.screen.StatisticScreen
+import com.example.sportsstatisticsapp.presentation.screen.addworkout.AddNewWorkout
+import com.example.sportsstatisticsapp.presentation.screen.addworkout.ComposeWorkout
 
 
 @Composable
@@ -21,6 +23,9 @@ fun MainNavHost() {
         composable(Destination.Setting.route) { SettingScreen( navController = navController ) }
         composable(Destination.CreateWorkout.route) { CreateWorkoutScreen( navController = navController ) }
         composable(Destination.FindWorkout.route) { FindWorkoutScreen( navController = navController ) }
+
+        composable(Destination.ComposeWorkout.route) { ComposeWorkout( navController = navController) }
+        composable(Destination.AddNewWorkout.route) { AddNewWorkout(navController = navController) }
 
     }
 }
