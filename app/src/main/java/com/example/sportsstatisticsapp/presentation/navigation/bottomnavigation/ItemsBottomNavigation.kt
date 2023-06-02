@@ -56,8 +56,8 @@ fun ItemsBottomNavigation(
 
             // Compose a Workout screen
             ROUT_COMPOSE_WORKOUT -> listOf(
-                NavigationItems(Destination.ComposeWorkout.route, TITLE_BACK),
-                NavigationItems(Destination.AddNewWorkout.route, TITLE_SAVE)
+                NavigationItems(Destination.CreateWorkout.route, TITLE_BACK),
+                NavigationItems(Destination.AddNewWorkout.route, Destination.AddNewWorkout.title)
             )
 
             // AddNewWorkout screen

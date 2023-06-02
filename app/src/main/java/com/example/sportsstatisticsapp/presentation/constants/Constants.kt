@@ -9,7 +9,7 @@ object Constants {
     const val ROUT_CREATE_WORKOUT = "create_workout"
     const val ROUT_FIND_WORKOUT = "find_workout"
     const val ROUT_COMPOSE_WORKOUT = "compose_workout"
-    const val ROUT_ADD_NEW_WORKOUT = "create_new_workout"
+    const val ROUT_ADD_NEW_WORKOUT = "add_new_workout"
 
     const val TITLE_SETTING = "Settings"
     const val TITLE_STATISTIC = "Statistic"
@@ -17,7 +17,7 @@ object Constants {
     const val TITLE_CREATE_WORKOUT = "CreateWorkout"
     const val TITLE_FIND_WORKOUT = "FindWorkout"
     const val TITLE_COMPOSE_WORKOUT  = "ComposeWorkout"
-    const val TITLE_ADD_NEW_WORKOUT = "Create"
+    const val TITLE_ADD_NEW_WORKOUT = "  Add  "
 
     const val TITLE_BACK = "  Back  "
     const val TITLE_SAVE = "  Save  "

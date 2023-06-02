@@ -33,38 +33,41 @@ import com.example.sportsstatisticsapp.presentation.navigation.Destination
 import com.example.sportsstatisticsapp.presentation.navigation.bottomnavigation.BottomPanel
 import com.example.sportsstatisticsapp.presentation.navigation.bottomnavigation.ItemsBottomNavigation
 import com.example.sportsstatisticsapp.presentation.navigation.parameterResource
+import com.example.sportsstatisticsapp.ui.theme.AppTheme
 
 
 @Composable
 fun MainScreen(
     navController: NavHostController
 ) {
-
-    Box(
-        modifier = Modifier.fillMaxSize()
-    ) {
-
-        Column(
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier
-                .fillMaxSize()
-                .background(brush = Brush.horizontalGradient(colors = colorScreen()))
+    AppTheme {
+        Box(
+            modifier = Modifier.fillMaxSize()
         ) {
-            CreateWorkoutButton(
-                buttonShape = parameterResource(15,15,15,15),
-                navController = navController
-            )
 
-            Spacer(modifier = Modifier.height(34.dp))
 
-            FindWorkoutButton(
-                buttonShape = parameterResource(15,15,15,15),
-                navController = navController
-            )
+            Column(
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(brush = Brush.horizontalGradient(colors = colorScreen()))
+            ) {
+                CreateWorkoutButton(
+                    buttonShape = parameterResource(15,15,15,15),
+                    navController = navController
+                )
+
+                Spacer(modifier = Modifier.height(34.dp))
+
+                FindWorkoutButton(
+                    buttonShape = parameterResource(15,15,15,15),
+                    navController = navController
+                )
+            }
+
+            BottomPanel( navController = navController )
         }
-
-        BottomPanel( navController = navController )
     }
 
 }

@@ -7,11 +7,17 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.sportsstatisticsapp.presentation.navigation.bottomnavigation.BottomPanel
 import com.example.sportsstatisticsapp.presentation.navigation.colorScreen
@@ -25,6 +31,7 @@ fun ComposeWorkout(navController: NavHostController) {
         modifier = Modifier.fillMaxSize()
     ) {
 
+
         Column(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -33,10 +40,12 @@ fun ComposeWorkout(navController: NavHostController) {
                 .background(brush = Brush.horizontalGradient(colors = colorScreen()))
         ) {
 
-            // Here are the workouts
+            LazyColumn() {
+
+            }
 
         }
 
-        BottomPanel( navController = navController )
+        BottomPanel(navController = navController)
     }
 }
