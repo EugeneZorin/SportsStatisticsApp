@@ -1,11 +1,10 @@
 package com.example.sportsstatisticsapp.presentation.navigation
 
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
-import com.example.sportsstatisticsapp.R
 
 @Composable
 fun parameterResource(
@@ -27,7 +26,7 @@ fun parameterResource(
 fun colorScreen(): List<Color> {
 
     return listOf(
-        colorResource(id = R.color.almostWhite),
-        colorResource(id = R.color.whiteBlue)
+        colorScheme.background,
+        colorScheme.onBackground
     )
 }

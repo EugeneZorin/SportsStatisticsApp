@@ -7,13 +7,14 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ripple.rememberRipple
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -27,17 +28,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.example.sportsstatisticsapp.presentation.navigation.colorScreen
-import com.example.sportsstatisticsapp.presentation.navigation.parameterResource
 import com.example.sportsstatisticsapp.presentation.navigation.Destination
 import com.example.sportsstatisticsapp.presentation.navigation.bottomnavigation.BottomPanel
-import com.example.sportsstatisticsapp.presentation.navigation.bottomnavigation.ItemsBottomNavigation
-import com.example.sportsstatisticsapp.presentation.navigation.bottomnavigation.Rhombus
+import com.example.sportsstatisticsapp.presentation.navigation.colorScreen
+import com.example.sportsstatisticsapp.presentation.navigation.parameterResource
 
 @Composable
 fun CreateWorkoutScreen(
     navController: NavHostController
 ) {
+    val parameter = parameterResource(15, 15, 15, 15)
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -52,31 +52,30 @@ fun CreateWorkoutScreen(
         ) {
 
             ComposeWorkout(
-                buttonShape = parameterResource(15,15,15,15),
+                buttonShape = parameter,
                 navController
             )
 
             Spacer(modifier = Modifier.height(34.dp))
 
             CombineWorkout(
-                buttonShape = parameterResource(15,15,15,15),
+                buttonShape = parameter,
                 navController
             )
 
             Spacer(modifier = Modifier.height(34.dp))
 
             FindWorkoutButtonSecondScreen(
-                buttonShape = parameterResource(15,15,15,15),
+                buttonShape = parameter,
                 navController
             )
         }
 
-        BottomPanel( navController = navController )
+        BottomPanel(navController = navController)
 
 
     }
 }
-
 
 
 @Composable
@@ -87,24 +86,25 @@ fun ComposeWorkout(
 
     val interactionSource = remember { MutableInteractionSource() }
 
-    Box(modifier = Modifier
-        .shadow(6.dp, buttonShape)
-        .background(Color.White, shape = buttonShape)
-        .clip(shape = buttonShape)
-        .clickable(
-            interactionSource = interactionSource,
-            indication = rememberRipple(),
-        ) {
-            navController.navigate(Destination.ComposeWorkout.route)
-        }
-        .padding(PaddingValues(horizontal = 40.dp, vertical = 15.dp)),
+    Box(
+        modifier = Modifier
+            .shadow(6.dp, buttonShape)
+            .background( colorScheme.primary, shape = buttonShape)
+            .clip(shape = buttonShape)
+            .clickable(
+                interactionSource = interactionSource,
+                indication = rememberRipple(),
+            ) {
+                navController.navigate(Destination.ComposeWorkout.route)
+            }
+            .padding(PaddingValues(horizontal = 40.dp, vertical = 15.dp)),
 
 
         ) {
         Text(
             text = "Compose a Workout",
             fontSize = 26.sp,
-            color = Color.Black,
+            color = colorScheme.onSecondary,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.align(Alignment.Center)
         )
@@ -119,24 +119,25 @@ fun CombineWorkout(
 
     val interactionSource = remember { MutableInteractionSource() }
 
-    Box(modifier = Modifier
-        .shadow(6.dp, buttonShape)
-        .background(Color.White, shape = buttonShape)
-        .clip(shape = buttonShape)
-        .clickable(
-            interactionSource = interactionSource,
-            indication = rememberRipple(),
-        ) {
-            TODO()
-        }
-        .padding(PaddingValues(horizontal = 40.dp, vertical = 15.dp)),
+    Box(
+        modifier = Modifier
+            .shadow(6.dp, buttonShape)
+            .background( colorScheme.primary, shape = buttonShape)
+            .clip(shape = buttonShape)
+            .clickable(
+                interactionSource = interactionSource,
+                indication = rememberRipple(),
+            ) {
+                TODO()
+            }
+            .padding(PaddingValues(horizontal = 40.dp, vertical = 15.dp)),
 
 
         ) {
         Text(
             text = "  Combine Workout  ",
             fontSize = 26.sp,
-            color = Color.Black,
+            color = colorScheme.onSecondary,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.align(Alignment.Center)
         )
@@ -153,7 +154,7 @@ fun FindWorkoutButtonSecondScreen(
 
     Box(modifier = Modifier
         .shadow(6.dp, buttonShape)
-        .background(Color.White, shape = buttonShape)
+        .background( colorScheme.primary, shape = buttonShape)
         .clip(shape = buttonShape)
         .clickable(
             interactionSource = interactionSource,
@@ -167,7 +168,7 @@ fun FindWorkoutButtonSecondScreen(
         Text(
             text = "     Find a Workout    ",
             fontSize = 26.sp,
-            color = Color.Black,
+            color = colorScheme.onSecondary,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.align(Alignment.Center)
         )

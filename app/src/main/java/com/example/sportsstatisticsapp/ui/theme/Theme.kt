@@ -5,6 +5,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 
 private val DarkColorScheme = darkColorScheme(
     background = AlmostWhite,
@@ -13,7 +14,7 @@ private val DarkColorScheme = darkColorScheme(
     onPrimary = LightGray,
     secondary = Grey,
     onSecondary = Black,
-    tertiary = Green,
+    tertiary = Blue,
     onTertiary = VioletBlue,
 )
 
@@ -24,9 +25,11 @@ private val LightColorScheme = lightColorScheme(
     onPrimary = LightGray,
     secondary = Grey,
     onSecondary = Black,
-    tertiary = Green,
+    tertiary = Blue,
     onTertiary = VioletBlue,
 )
+
+
 
 @Composable
 fun AppTheme(
@@ -44,3 +47,4 @@ fun AppTheme(
         content = content
     )
 }
+

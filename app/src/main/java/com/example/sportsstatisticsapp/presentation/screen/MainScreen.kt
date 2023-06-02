@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ripple.rememberRipple
+import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -40,34 +41,35 @@ import com.example.sportsstatisticsapp.ui.theme.AppTheme
 fun MainScreen(
     navController: NavHostController
 ) {
-    AppTheme {
-        Box(
-            modifier = Modifier.fillMaxSize()
+
+    val parameter = parameterResource(15,15,15,15)
+
+    Box(
+        modifier = Modifier.fillMaxSize()
+    ) {
+
+
+        Column(
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .fillMaxSize()
+                .background(brush = Brush.horizontalGradient(colors = colorScreen()))
         ) {
+            CreateWorkoutButton(
+                buttonShape = parameter,
+                navController = navController
+            )
 
+            Spacer(modifier = Modifier.height(34.dp))
 
-            Column(
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(brush = Brush.horizontalGradient(colors = colorScreen()))
-            ) {
-                CreateWorkoutButton(
-                    buttonShape = parameterResource(15,15,15,15),
-                    navController = navController
-                )
-
-                Spacer(modifier = Modifier.height(34.dp))
-
-                FindWorkoutButton(
-                    buttonShape = parameterResource(15,15,15,15),
-                    navController = navController
-                )
-            }
-
-            BottomPanel( navController = navController )
+            FindWorkoutButton(
+                buttonShape = parameter,
+                navController = navController
+            )
         }
+
+        BottomPanel( navController = navController )
     }
 
 }
@@ -82,7 +84,7 @@ fun CreateWorkoutButton(
 
     Box(modifier = Modifier
         .shadow(6.dp, buttonShape)
-        .background(Color.White, shape = buttonShape)
+        .background( colorScheme.primary, shape = buttonShape)
         .clip(shape = buttonShape)
         .clickable(
             interactionSource = interactionSource,
@@ -97,7 +99,7 @@ fun CreateWorkoutButton(
         Text(
             text = "Create a Workout",
             fontSize = 26.sp,
-            color = Color.Black,
+            color = colorScheme.onSecondary,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.align(Alignment.Center)
         )
@@ -114,7 +116,7 @@ fun FindWorkoutButton(
 
     Box(modifier = Modifier
         .shadow(6.dp, buttonShape)
-        .background(Color.White, shape = buttonShape)
+        .background(colorScheme.primary, shape = buttonShape)
         .clip(shape = buttonShape)
         .clickable(
             interactionSource = interactionSource,
@@ -128,7 +130,7 @@ fun FindWorkoutButton(
         Text(
             text = "  Find a Workout  ",
             fontSize = 26.sp,
-            color = Color.Black,
+            color = colorScheme.onSecondary,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.align(Alignment.Center)
         )
