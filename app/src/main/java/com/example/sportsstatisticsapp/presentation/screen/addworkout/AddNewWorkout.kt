@@ -18,6 +18,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -40,6 +41,8 @@ import com.example.sportsstatisticsapp.presentation.constants.InputFieldConstant
 import com.example.sportsstatisticsapp.presentation.navigation.bottomnavigation.BottomPanel
 import com.example.sportsstatisticsapp.presentation.navigation.colorScreen
 import com.example.sportsstatisticsapp.presentation.navigation.parameterResource
+import com.example.sportsstatisticsapp.presentation.viewmodel.MainViewModel
+import com.example.sportsstatisticsapp.presentation.viewmodel.viewcontract.AddNewWorkoutContract
 
 @Composable
 fun AddNewWorkout(
@@ -66,7 +69,7 @@ fun AddNewWorkout(
                     textFieldLabel = "Name the workout",
                     modifier = Modifier.width(290.dp),
                     spText = 22.sp,
-                    rowID = NAME_THE_WORKOUT
+                    rowID = NAME_THE_WORKOUT,
                 )
             }
 
@@ -81,14 +84,14 @@ fun AddNewWorkout(
                     textFieldLabel = "Replays",
                     modifier = Modifier.weight(1f),
                     spText = 20.sp,
-                    rowID = REPLAYS
+                    rowID = REPLAYS,
                 )
                 Spacer(modifier = Modifier.width(15.dp))
                 NewWorkoutInputFields(
                     textFieldLabel = "Approach",
                     modifier = Modifier.weight(1f),
                     spText = 20.sp,
-                    rowID = APPROACH
+                    rowID = APPROACH,
                 )
             }
 
@@ -103,14 +106,14 @@ fun AddNewWorkout(
                     textFieldLabel = "All Time",
                     modifier = Modifier.weight(1f),
                     spText = 20.sp,
-                    rowID = ALL_TIME
+                    rowID = ALL_TIME,
                 )
                 Spacer(modifier = Modifier.width(15.dp))
                 NewWorkoutInputFields(
                     textFieldLabel = "Time Approach",
                     modifier = Modifier.weight(1f),
                     spText = 15.sp,
-                    rowID = TIME_APPROACH
+                    rowID = TIME_APPROACH,
                 )
             }
 
@@ -120,7 +123,7 @@ fun AddNewWorkout(
                 textFieldLabel = "Distances",
                 modifier = Modifier.width(150.dp),
                 spText = 20.sp,
-                rowID = DISTANCES
+                rowID = DISTANCES,
             )
         }
 
@@ -135,10 +138,17 @@ fun NewWorkoutInputFields(
     modifier: Modifier = Modifier,
     spText: TextUnit,
     rowID: String,
+    viewModel: MainViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
 ) {
 
     var nameWorkout by rememberSaveable { mutableStateOf("") }
     val shapeParameter = parameterResource(15, 15, 15, 15)
+
+    val contract = remember { object : AddNewWorkoutContract {
+        override fun onAddNewWorkout(rowID: String, nameWorkout: String) {
+            viewModel.addNewWorkout(rowID, nameWorkout)
+        }
+    } }
 
     val customTextFieldColors = TextFieldDefaults.outlinedTextFieldColors(
         focusedBorderColor = colorScheme.onTertiary,
@@ -156,6 +166,7 @@ fun NewWorkoutInputFields(
             value = nameWorkout,
             onValueChange = {
                 nameWorkout = it
+                contract.onAddNewWorkout(rowID, nameWorkout)
             },
             textStyle = TextStyle(
                 textAlign = TextAlign.Center, fontSize = spText, color = colorScheme.onSecondary
@@ -173,13 +184,6 @@ fun NewWorkoutInputFields(
             colors = customTextFieldColors,
         )
     }
-}
-
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewNewWorkoutInputFields() {
-    NewWorkoutInputFields("12", Modifier.width(150.dp), 15.sp, NAME_THE_WORKOUT)
 }
 
 

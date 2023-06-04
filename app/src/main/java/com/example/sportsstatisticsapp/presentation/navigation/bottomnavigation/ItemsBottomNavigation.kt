@@ -66,8 +66,6 @@ fun ItemsBottomNavigation(
                 NavigationItems(Destination.AddNewWorkout.route, TITLE_SAVE)
             )
 
-
-
             else -> listOf(
                 NavigationItems(Destination.MainScreen.route, Destination.MainScreen.route),
             )

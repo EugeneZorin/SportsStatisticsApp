@@ -11,11 +11,14 @@ import com.example.sportsstatisticsapp.presentation.screen.SettingScreen
 import com.example.sportsstatisticsapp.presentation.screen.StatisticScreen
 import com.example.sportsstatisticsapp.presentation.screen.addworkout.AddNewWorkout
 import com.example.sportsstatisticsapp.presentation.screen.addworkout.ComposeWorkout
+import com.example.sportsstatisticsapp.presentation.viewmodel.MainViewModel
 
 
 @Composable
 fun MainNavHost() {
+
     val navController = rememberNavController()
+
     NavHost(navController = navController, startDestination = Destination.AddNewWorkout.route) {
 
         composable(Destination.MainScreen.route){ MainScreen( navController = navController ) }
@@ -25,7 +28,7 @@ fun MainNavHost() {
         composable(Destination.FindWorkout.route) { FindWorkoutScreen( navController = navController ) }
 
         composable(Destination.ComposeWorkout.route) { ComposeWorkout( navController = navController) }
-        composable(Destination.AddNewWorkout.route) { AddNewWorkout(navController = navController) }
+        composable(Destination.AddNewWorkout.route) { AddNewWorkout(navController = navController ) }
 
     }
 }
