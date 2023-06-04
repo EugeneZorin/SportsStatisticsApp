@@ -24,13 +24,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.example.sportsstatisticsapp.presentation.constants.InputFieldConstants.ALL_TIME
+import com.example.sportsstatisticsapp.presentation.constants.InputFieldConstants.APPROACH
+import com.example.sportsstatisticsapp.presentation.constants.InputFieldConstants.DISTANCES
+import com.example.sportsstatisticsapp.presentation.constants.InputFieldConstants.NAME_THE_WORKOUT
+import com.example.sportsstatisticsapp.presentation.constants.InputFieldConstants.REPLAYS
+import com.example.sportsstatisticsapp.presentation.constants.InputFieldConstants.TIME_APPROACH
 import com.example.sportsstatisticsapp.presentation.navigation.bottomnavigation.BottomPanel
 import com.example.sportsstatisticsapp.presentation.navigation.colorScreen
 import com.example.sportsstatisticsapp.presentation.navigation.parameterResource
@@ -56,7 +62,12 @@ fun AddNewWorkout(
             Box(
                 contentAlignment = Alignment.TopCenter
             ) {
-                NewWorkoutInputFields("Name the workout", Modifier.width(290.dp))
+                NewWorkoutInputFields(
+                    textFieldLabel = "Name the workout",
+                    modifier = Modifier.width(290.dp),
+                    spText = 22.sp,
+                    rowID = NAME_THE_WORKOUT
+                )
             }
 
             Spacer(modifier = Modifier.height(75.dp))
@@ -66,9 +77,19 @@ fun AddNewWorkout(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                NewWorkoutInputFields("Replays", Modifier.weight(1f))
+                NewWorkoutInputFields(
+                    textFieldLabel = "Replays",
+                    modifier = Modifier.weight(1f),
+                    spText = 20.sp,
+                    rowID = REPLAYS
+                )
                 Spacer(modifier = Modifier.width(15.dp))
-                NewWorkoutInputFields("Approach", Modifier.weight(1f))
+                NewWorkoutInputFields(
+                    textFieldLabel = "Approach",
+                    modifier = Modifier.weight(1f),
+                    spText = 20.sp,
+                    rowID = APPROACH
+                )
             }
 
             Spacer(modifier = Modifier.height(35.dp))
@@ -78,24 +99,42 @@ fun AddNewWorkout(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                NewWorkoutInputFields("All Time", Modifier.weight(1f))
+                NewWorkoutInputFields(
+                    textFieldLabel = "All Time",
+                    modifier = Modifier.weight(1f),
+                    spText = 20.sp,
+                    rowID = ALL_TIME
+                )
                 Spacer(modifier = Modifier.width(15.dp))
-                NewWorkoutInputFields("Time Approach", Modifier.weight(1f))
+                NewWorkoutInputFields(
+                    textFieldLabel = "Time Approach",
+                    modifier = Modifier.weight(1f),
+                    spText = 15.sp,
+                    rowID = TIME_APPROACH
+                )
             }
 
             Spacer(modifier = Modifier.height(35.dp))
 
-            NewWorkoutInputFields("Distances", Modifier.width(150.dp))
+            NewWorkoutInputFields(
+                textFieldLabel = "Distances",
+                modifier = Modifier.width(150.dp),
+                spText = 20.sp,
+                rowID = DISTANCES
+            )
         }
 
         BottomPanel(navController = navController)
     }
 }
 
+
 @Composable
 fun NewWorkoutInputFields(
     textFieldLabel: String,
     modifier: Modifier = Modifier,
+    spText: TextUnit,
+    rowID: String,
 ) {
 
     var nameWorkout by rememberSaveable { mutableStateOf("") }
@@ -104,7 +143,7 @@ fun NewWorkoutInputFields(
     val customTextFieldColors = TextFieldDefaults.outlinedTextFieldColors(
         focusedBorderColor = colorScheme.onTertiary,
         unfocusedBorderColor = colorScheme.onBackground,
-        backgroundColor = Color.White,
+        backgroundColor = colorScheme.primary,
         cursorColor = colorScheme.secondary
     )
 
@@ -115,20 +154,18 @@ fun NewWorkoutInputFields(
             shape = shapeParameter,
             singleLine = true,
             value = nameWorkout,
-            onValueChange = { nameWorkout = it },
+            onValueChange = {
+                nameWorkout = it
+            },
             textStyle = TextStyle(
-                textAlign = TextAlign.Center,
-                fontSize = 15.sp,
-                color = colorScheme.onSecondary
+                textAlign = TextAlign.Center, fontSize = spText, color = colorScheme.onSecondary
             ),
 
             label = {
                 Text(
-                    textFieldLabel,
-                    modifier = Modifier.fillMaxWidth(1f),
-                    style = TextStyle(
+                    textFieldLabel, modifier = Modifier.fillMaxWidth(1f), style = TextStyle(
                         textAlign = TextAlign.Center,
-                        fontSize = 15.sp,
+                        fontSize = spText,
                         color = colorScheme.secondary
                     )
                 )
@@ -142,5 +179,7 @@ fun NewWorkoutInputFields(
 @Preview(showBackground = true)
 @Composable
 fun PreviewNewWorkoutInputFields() {
-    NewWorkoutInputFields("12", Modifier.width(150.dp))
+    NewWorkoutInputFields("12", Modifier.width(150.dp), 15.sp, NAME_THE_WORKOUT)
 }
+
+
