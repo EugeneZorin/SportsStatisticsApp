@@ -16,7 +16,7 @@ import com.example.sportsstatisticsapp.presentation.screen.addworkout.ComposeWor
 @Composable
 fun MainNavHost() {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = Destination.MainScreen.route) {
+    NavHost(navController = navController, startDestination = Destination.AddNewWorkout.route) {
 
         composable(Destination.MainScreen.route){ MainScreen( navController = navController ) }
         composable(Destination.Statistic.route) { StatisticScreen( navController = navController ) }
