@@ -31,19 +31,29 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.sportsstatisticsapp.presentation.constants.Constants.TITLE_SAVE
 import com.example.sportsstatisticsapp.presentation.navigation.Destination
+import com.example.sportsstatisticsapp.presentation.navigation.bottomnavigation.buttoncontract.ButtonSaveContract
 import com.example.sportsstatisticsapp.presentation.navigation.colorScreen
 import com.example.sportsstatisticsapp.presentation.navigation.parameterResource
+import com.example.sportsstatisticsapp.presentation.viewmodel.addviewmodel.AddNewWorkoutViewModel
 
 
 @Composable
 fun BottomNavigation(
     navController: NavHostController,
     currentRoute: String,
-    navItems: SnapshotStateList<NavigationItems>
+    navItems: SnapshotStateList<NavigationItems>,
+    addNewWorkoutViewModel: AddNewWorkoutViewModel = viewModel()
 ) {
+
+    val buttonSaveContract = object: ButtonSaveContract{
+        override fun onButtonSave() {
+            addNewWorkoutViewModel.onButtonSave()
+        }
+    }
 
     Box(
         modifier = Modifier
@@ -72,8 +82,12 @@ fun BottomNavigation(
                         icon = { AddItem(item) },
                         selected = item.route == currentRoute,
                         onClick = {
-                            navController.navigate(item.route) {
+                            if (item.title == TITLE_SAVE){
+                                buttonSaveContract.onButtonSave()
+                            } else {
+                                navController.navigate(item.route) {
 
+                                }
                             }
                         }
                     )

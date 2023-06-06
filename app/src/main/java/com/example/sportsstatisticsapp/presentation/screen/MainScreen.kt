@@ -34,12 +34,13 @@ import com.example.sportsstatisticsapp.presentation.navigation.Destination
 import com.example.sportsstatisticsapp.presentation.navigation.bottomnavigation.BottomPanel
 import com.example.sportsstatisticsapp.presentation.navigation.bottomnavigation.ItemsBottomNavigation
 import com.example.sportsstatisticsapp.presentation.navigation.parameterResource
+import com.example.sportsstatisticsapp.presentation.viewmodel.addviewmodel.AddNewWorkoutViewModel
 import com.example.sportsstatisticsapp.ui.theme.AppTheme
 
 
 @Composable
 fun MainScreen(
-    navController: NavHostController
+    navController: NavHostController,
 ) {
 
     val parameter = parameterResource(15,15,15,15)
@@ -69,7 +70,9 @@ fun MainScreen(
             )
         }
 
-        BottomPanel( navController = navController )
+        BottomPanel(
+            navController = navController,
+        )
     }
 
 }

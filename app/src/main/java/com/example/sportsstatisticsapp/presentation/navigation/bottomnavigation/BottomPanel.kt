@@ -11,10 +11,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavHostController
 import com.example.sportsstatisticsapp.presentation.navigation.colorScreen
 import com.example.sportsstatisticsapp.presentation.navigation.parameterResource
+import com.example.sportsstatisticsapp.presentation.viewmodel.addviewmodel.AddNewWorkoutViewModel
 
 @Composable
 fun BottomPanel (
-    navController: NavHostController
+    navController: NavHostController,
 ){
 
     Box(){

@@ -27,10 +27,10 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.sportsstatisticsapp.presentation.constants.InputFieldConstants.ALL_TIME
 import com.example.sportsstatisticsapp.presentation.constants.InputFieldConstants.APPROACH
@@ -41,12 +41,13 @@ import com.example.sportsstatisticsapp.presentation.constants.InputFieldConstant
 import com.example.sportsstatisticsapp.presentation.navigation.bottomnavigation.BottomPanel
 import com.example.sportsstatisticsapp.presentation.navigation.colorScreen
 import com.example.sportsstatisticsapp.presentation.navigation.parameterResource
-import com.example.sportsstatisticsapp.presentation.viewmodel.MainViewModel
-import com.example.sportsstatisticsapp.presentation.viewmodel.viewcontract.AddNewWorkoutContract
+import com.example.sportsstatisticsapp.presentation.viewmodel.addviewmodel.AddNewWorkoutViewModel
+import com.example.sportsstatisticsapp.presentation.viewmodel.addviewmodel.viewcontract.AddNewWorkoutContract
+
 
 @Composable
 fun AddNewWorkout(
-    navController: NavHostController
+    navController: NavHostController,
 ) {
     Box(
         modifier = Modifier.fillMaxSize()
@@ -70,6 +71,7 @@ fun AddNewWorkout(
                     modifier = Modifier.width(290.dp),
                     spText = 22.sp,
                     rowID = NAME_THE_WORKOUT,
+
                 )
             }
 
@@ -138,7 +140,7 @@ fun NewWorkoutInputFields(
     modifier: Modifier = Modifier,
     spText: TextUnit,
     rowID: String,
-    viewModel: MainViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
+    addNewWorkoutViewModel: AddNewWorkoutViewModel = viewModel()
 ) {
 
     var nameWorkout by rememberSaveable { mutableStateOf("") }
@@ -146,7 +148,7 @@ fun NewWorkoutInputFields(
 
     val contract = remember { object : AddNewWorkoutContract {
         override fun onAddNewWorkout(rowID: String, nameWorkout: String) {
-            viewModel.addNewWorkout(rowID, nameWorkout)
+            addNewWorkoutViewModel.addNewWorkout(rowID, nameWorkout)
         }
     } }
 
