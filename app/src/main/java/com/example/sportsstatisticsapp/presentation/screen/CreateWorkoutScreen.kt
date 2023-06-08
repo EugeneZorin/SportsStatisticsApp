@@ -74,8 +74,11 @@ fun CreateWorkoutScreen(
 
         BottomPanel(
             navController = navController,
+            firstRoutBottomPanel = Destination.Statistic.route,
+            firstTitleBottomPanel = Destination.Statistic.title,
+            SecondRoutBottomPanel = Destination.Setting.route,
+            SecondTitleBottomPanel = Destination.Setting.title
         )
-
 
     }
 }

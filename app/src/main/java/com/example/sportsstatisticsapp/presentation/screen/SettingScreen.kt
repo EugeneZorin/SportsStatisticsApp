@@ -11,6 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.navigation.NavHostController
+import com.example.sportsstatisticsapp.presentation.navigation.Destination
 import com.example.sportsstatisticsapp.presentation.navigation.bottomnavigation.BottomPanel
 import com.example.sportsstatisticsapp.presentation.navigation.colorScreen
 
@@ -32,6 +33,12 @@ fun SettingScreen(
 
         }
 
-        BottomPanel( navController = navController )
+        BottomPanel(
+            navController = navController,
+            firstRoutBottomPanel = Destination.Statistic.route,
+            firstTitleBottomPanel = Destination.Statistic.title,
+            SecondRoutBottomPanel = Destination.Setting.route,
+            SecondTitleBottomPanel = Destination.Setting.title
+        )
     }
 }

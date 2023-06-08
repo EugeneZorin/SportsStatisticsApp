@@ -31,6 +31,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.sportsstatisticsapp.presentation.constants.Constants.TITLE_SAVE
@@ -46,14 +47,13 @@ fun BottomNavigation(
     navController: NavHostController,
     currentRoute: String,
     navItems: SnapshotStateList<NavigationItems>,
-    addNewWorkoutViewModel: AddNewWorkoutViewModel = viewModel()
 ) {
-
+/*
     val buttonSaveContract = object: ButtonSaveContract{
         override fun onButtonSave() {
             addNewWorkoutViewModel.onButtonSave()
         }
-    }
+    }*/
 
     Box(
         modifier = Modifier
@@ -83,7 +83,7 @@ fun BottomNavigation(
                         selected = item.route == currentRoute,
                         onClick = {
                             if (item.title == TITLE_SAVE){
-                                buttonSaveContract.onButtonSave()
+                                /*buttonSaveContract.onButtonSave()*/
                             } else {
                                 navController.navigate(item.route) {
 
@@ -124,36 +124,3 @@ fun AddItem(
     }
 }
 
-@Composable
-fun Rhombus(
-    colorRhombus: List<Color>,
-    navController: NavHostController
-) {
-
-    var clicked by remember { mutableStateOf(false) }
-    val scale by animateFloatAsState(if (clicked) 0.8f else 1.0f)
-
-    val interactionSource = remember { MutableInteractionSource() }
-
-    Box(
-        modifier = Modifier
-            .padding(vertical = 40.dp)
-            .rotate(degrees = 45f)
-            .graphicsLayer {
-                scaleX = scale
-                scaleY = scale
-            }
-            .clickable(
-                interactionSource = interactionSource,
-                indication = rememberRipple(),
-            ) {
-                clicked = !clicked
-                navController.navigate(Destination.MainScreen.route)
-            }
-
-            .background(
-                brush = Brush.horizontalGradient(colors = colorRhombus)
-            )
-            .padding(PaddingValues(horizontal = 30.dp, vertical = 30.dp)),
-    )
-}

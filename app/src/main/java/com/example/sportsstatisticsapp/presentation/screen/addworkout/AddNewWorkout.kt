@@ -32,12 +32,16 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import com.example.sportsstatisticsapp.presentation.constants.Constants
+import com.example.sportsstatisticsapp.presentation.constants.Constants.TITLE_ADD_NEW_WORKOUT
+import com.example.sportsstatisticsapp.presentation.constants.Constants.TITLE_BACK
 import com.example.sportsstatisticsapp.presentation.constants.InputFieldConstants.ALL_TIME
 import com.example.sportsstatisticsapp.presentation.constants.InputFieldConstants.APPROACH
 import com.example.sportsstatisticsapp.presentation.constants.InputFieldConstants.DISTANCES
 import com.example.sportsstatisticsapp.presentation.constants.InputFieldConstants.NAME_THE_WORKOUT
 import com.example.sportsstatisticsapp.presentation.constants.InputFieldConstants.REPLAYS
 import com.example.sportsstatisticsapp.presentation.constants.InputFieldConstants.TIME_APPROACH
+import com.example.sportsstatisticsapp.presentation.navigation.Destination
 import com.example.sportsstatisticsapp.presentation.navigation.bottomnavigation.BottomPanel
 import com.example.sportsstatisticsapp.presentation.navigation.colorScreen
 import com.example.sportsstatisticsapp.presentation.navigation.parameterResource
@@ -48,6 +52,7 @@ import com.example.sportsstatisticsapp.presentation.viewmodel.addviewmodel.viewc
 @Composable
 fun AddNewWorkout(
     navController: NavHostController,
+    addNewWorkoutViewModel: AddNewWorkoutViewModel = viewModel()
 ) {
     Box(
         modifier = Modifier.fillMaxSize()
@@ -71,6 +76,7 @@ fun AddNewWorkout(
                     modifier = Modifier.width(290.dp),
                     spText = 22.sp,
                     rowID = NAME_THE_WORKOUT,
+                    addNewWorkoutViewModel = addNewWorkoutViewModel
 
                 )
             }
@@ -87,6 +93,7 @@ fun AddNewWorkout(
                     modifier = Modifier.weight(1f),
                     spText = 20.sp,
                     rowID = REPLAYS,
+                    addNewWorkoutViewModel = addNewWorkoutViewModel
                 )
                 Spacer(modifier = Modifier.width(15.dp))
                 NewWorkoutInputFields(
@@ -94,6 +101,7 @@ fun AddNewWorkout(
                     modifier = Modifier.weight(1f),
                     spText = 20.sp,
                     rowID = APPROACH,
+                    addNewWorkoutViewModel = addNewWorkoutViewModel
                 )
             }
 
@@ -109,6 +117,7 @@ fun AddNewWorkout(
                     modifier = Modifier.weight(1f),
                     spText = 20.sp,
                     rowID = ALL_TIME,
+                    addNewWorkoutViewModel = addNewWorkoutViewModel
                 )
                 Spacer(modifier = Modifier.width(15.dp))
                 NewWorkoutInputFields(
@@ -116,6 +125,7 @@ fun AddNewWorkout(
                     modifier = Modifier.weight(1f),
                     spText = 15.sp,
                     rowID = TIME_APPROACH,
+                    addNewWorkoutViewModel = addNewWorkoutViewModel
                 )
             }
 
@@ -126,10 +136,17 @@ fun AddNewWorkout(
                 modifier = Modifier.width(150.dp),
                 spText = 20.sp,
                 rowID = DISTANCES,
+                addNewWorkoutViewModel = addNewWorkoutViewModel
             )
         }
 
-        BottomPanel(navController = navController)
+        BottomPanel(
+            navController = navController,
+            firstRoutBottomPanel = Destination.ComposeWorkout.route,
+            firstTitleBottomPanel = TITLE_BACK,
+            SecondRoutBottomPanel = Destination.AddNewWorkout.route,
+            SecondTitleBottomPanel = TITLE_ADD_NEW_WORKOUT
+        )
     }
 }
 
@@ -140,7 +157,7 @@ fun NewWorkoutInputFields(
     modifier: Modifier = Modifier,
     spText: TextUnit,
     rowID: String,
-    addNewWorkoutViewModel: AddNewWorkoutViewModel = viewModel()
+    addNewWorkoutViewModel: AddNewWorkoutViewModel
 ) {
 
     var nameWorkout by rememberSaveable { mutableStateOf("") }

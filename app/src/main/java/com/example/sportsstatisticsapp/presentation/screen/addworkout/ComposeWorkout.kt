@@ -19,6 +19,8 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.example.sportsstatisticsapp.presentation.constants.Constants.TITLE_BACK
+import com.example.sportsstatisticsapp.presentation.navigation.Destination
 import com.example.sportsstatisticsapp.presentation.navigation.bottomnavigation.BottomPanel
 import com.example.sportsstatisticsapp.presentation.navigation.colorScreen
 import com.example.sportsstatisticsapp.presentation.navigation.parameterResource
@@ -46,6 +48,12 @@ fun ComposeWorkout(navController: NavHostController) {
 
         }
 
-        BottomPanel(navController = navController)
+        BottomPanel(
+            navController = navController,
+            firstRoutBottomPanel = Destination.CreateWorkout.route,
+            firstTitleBottomPanel = TITLE_BACK,
+            SecondRoutBottomPanel = Destination.AddNewWorkout.route,
+            SecondTitleBottomPanel = Destination.AddNewWorkout.title
+        )
     }
 }

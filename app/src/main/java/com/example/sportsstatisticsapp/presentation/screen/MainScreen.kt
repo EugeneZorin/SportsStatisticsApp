@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -23,19 +22,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.example.sportsstatisticsapp.presentation.navigation.colorScreen
-import com.example.sportsstatisticsapp.presentation.navigation.bottomnavigation.Rhombus
 import com.example.sportsstatisticsapp.presentation.navigation.Destination
 import com.example.sportsstatisticsapp.presentation.navigation.bottomnavigation.BottomPanel
-import com.example.sportsstatisticsapp.presentation.navigation.bottomnavigation.ItemsBottomNavigation
+import com.example.sportsstatisticsapp.presentation.navigation.colorScreen
 import com.example.sportsstatisticsapp.presentation.navigation.parameterResource
-import com.example.sportsstatisticsapp.presentation.viewmodel.addviewmodel.AddNewWorkoutViewModel
-import com.example.sportsstatisticsapp.ui.theme.AppTheme
 
 
 @Composable
@@ -72,6 +66,10 @@ fun MainScreen(
 
         BottomPanel(
             navController = navController,
+            firstRoutBottomPanel = Destination.Statistic.route,
+            firstTitleBottomPanel = Destination.Statistic.title,
+            SecondRoutBottomPanel = Destination.Setting.route,
+            SecondTitleBottomPanel = Destination.Setting.title
         )
     }
 

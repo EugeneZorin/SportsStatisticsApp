@@ -21,6 +21,10 @@ import com.example.sportsstatisticsapp.presentation.viewmodel.addviewmodel.AddNe
 @Composable
 fun ItemsBottomNavigation(
     navController: NavHostController,
+    firstRoutBottomPanel: String,
+    firstTitleBottomPanel: String,
+    SecondRoutBottomPanel: String,
+    SecondTitleBottomPanel: String,
 ) {
 
     val navItems = remember { mutableStateListOf<NavigationItems>() }
@@ -28,58 +32,20 @@ fun ItemsBottomNavigation(
 
     LaunchedEffect(currentRoute) {
 
-        val newNavItems = when (currentRoute) {
 
-            ROUT_MAIN_SCREEN -> listOf(
-                NavigationItems(Destination.Setting.route, Destination.Setting.title),
-                NavigationItems(Destination.Statistic.route, Destination.Statistic.title)
-            )
+        val newNavItems = listOf(
+            NavigationItems(firstRoutBottomPanel, firstTitleBottomPanel),
+            NavigationItems(SecondRoutBottomPanel, SecondTitleBottomPanel)
+        )
 
-            ROUT_CREATE_WORKOUT -> listOf(
-                NavigationItems(Destination.Setting.route, Destination.Setting.title),
-                NavigationItems(Destination.Statistic.route, Destination.Statistic.title)
-            )
-
-            ROUT_FIND_WORKOUT -> listOf(
-                NavigationItems(Destination.Setting.route, Destination.Setting.title),
-                NavigationItems(Destination.Statistic.route, Destination.Statistic.title)
-            )
-
-            ROUT_SETTING -> listOf(
-                NavigationItems(Destination.Setting.route, Destination.Setting.title),
-                NavigationItems(Destination.Statistic.route, Destination.Statistic.title)
-            )
-
-            ROUT_STATISTIC -> listOf(
-                NavigationItems(Destination.Setting.route, Destination.Setting.title),
-                NavigationItems(Destination.Statistic.route, Destination.Statistic.title)
-            )
-
-            // Compose a Workout screen
-            ROUT_COMPOSE_WORKOUT -> listOf(
-                NavigationItems(Destination.CreateWorkout.route, TITLE_BACK),
-                NavigationItems(Destination.AddNewWorkout.route, Destination.AddNewWorkout.title)
-            )
-
-            // AddNewWorkout screen
-            ROUT_ADD_NEW_WORKOUT -> listOf(
-                NavigationItems(Destination.ComposeWorkout.route, TITLE_BACK),
-                NavigationItems(Destination.AddNewWorkout.route, TITLE_SAVE)
-            )
-
-            else -> listOf(
-                NavigationItems(Destination.MainScreen.route, Destination.MainScreen.route),
-            )
-        }
         navItems.clear()
         navItems.addAll(newNavItems)
     }
 
-
     BottomNavigation(
         navController = navController,
         currentRoute = currentRoute,
-        navItems = navItems,
+        navItems = navItems
     )
 
 }
