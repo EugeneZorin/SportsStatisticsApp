@@ -25,6 +25,7 @@ fun ItemsBottomNavigation(
     firstTitleBottomPanel: String,
     SecondRoutBottomPanel: String,
     SecondTitleBottomPanel: String,
+    addNewWorkoutViewModel: AddNewWorkoutViewModel? = null
 ) {
 
     val navItems = remember { mutableStateListOf<NavigationItems>() }
@@ -45,7 +46,8 @@ fun ItemsBottomNavigation(
     BottomNavigation(
         navController = navController,
         currentRoute = currentRoute,
-        navItems = navItems
+        navItems = navItems,
+        addNewWorkoutViewModel = addNewWorkoutViewModel
     )
 
 }

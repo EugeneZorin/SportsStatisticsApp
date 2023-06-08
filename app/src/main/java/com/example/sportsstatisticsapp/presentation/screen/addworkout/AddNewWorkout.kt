@@ -32,9 +32,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import com.example.sportsstatisticsapp.presentation.constants.Constants
 import com.example.sportsstatisticsapp.presentation.constants.Constants.TITLE_ADD_NEW_WORKOUT
 import com.example.sportsstatisticsapp.presentation.constants.Constants.TITLE_BACK
+import com.example.sportsstatisticsapp.presentation.constants.Constants.TITLE_SAVE
 import com.example.sportsstatisticsapp.presentation.constants.InputFieldConstants.ALL_TIME
 import com.example.sportsstatisticsapp.presentation.constants.InputFieldConstants.APPROACH
 import com.example.sportsstatisticsapp.presentation.constants.InputFieldConstants.DISTANCES
@@ -119,7 +119,9 @@ fun AddNewWorkout(
                     rowID = ALL_TIME,
                     addNewWorkoutViewModel = addNewWorkoutViewModel
                 )
+
                 Spacer(modifier = Modifier.width(15.dp))
+
                 NewWorkoutInputFields(
                     textFieldLabel = "Time Approach",
                     modifier = Modifier.weight(1f),
@@ -145,7 +147,7 @@ fun AddNewWorkout(
             firstRoutBottomPanel = Destination.ComposeWorkout.route,
             firstTitleBottomPanel = TITLE_BACK,
             SecondRoutBottomPanel = Destination.AddNewWorkout.route,
-            SecondTitleBottomPanel = TITLE_ADD_NEW_WORKOUT
+            SecondTitleBottomPanel = TITLE_SAVE
         )
     }
 }
@@ -163,11 +165,13 @@ fun NewWorkoutInputFields(
     var nameWorkout by rememberSaveable { mutableStateOf("") }
     val shapeParameter = parameterResource(15, 15, 15, 15)
 
-    val contract = remember { object : AddNewWorkoutContract {
-        override fun onAddNewWorkout(rowID: String, nameWorkout: String) {
-            addNewWorkoutViewModel.addNewWorkout(rowID, nameWorkout)
+    val contract = remember {
+        object : AddNewWorkoutContract {
+            override fun onAddNewWorkout(rowID: String, nameWorkout: String) {
+                addNewWorkoutViewModel.addNewWorkout(rowID, nameWorkout)
+            }
         }
-    } }
+    }
 
     val customTextFieldColors = TextFieldDefaults.outlinedTextFieldColors(
         focusedBorderColor = colorScheme.onTertiary,
@@ -204,5 +208,7 @@ fun NewWorkoutInputFields(
         )
     }
 }
+
+
 
 

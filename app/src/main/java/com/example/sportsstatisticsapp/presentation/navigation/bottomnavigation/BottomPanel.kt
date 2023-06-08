@@ -12,6 +12,7 @@ import androidx.navigation.NavHostController
 import com.example.sportsstatisticsapp.presentation.navigation.Destination
 import com.example.sportsstatisticsapp.presentation.navigation.colorScreen
 import com.example.sportsstatisticsapp.presentation.navigation.parameterResource
+import com.example.sportsstatisticsapp.presentation.viewmodel.addviewmodel.AddNewWorkoutViewModel
 
 @Composable
 fun BottomPanel (
@@ -21,6 +22,7 @@ fun BottomPanel (
     firstTitleBottomPanel: String,
     SecondRoutBottomPanel: String,
     SecondTitleBottomPanel: String,
+    addNewWorkoutViewModel: AddNewWorkoutViewModel? = null
 ){
     Box(){
         Row(
@@ -33,7 +35,8 @@ fun BottomPanel (
                 firstRoutBottomPanel = firstRoutBottomPanel,
                 firstTitleBottomPanel = firstTitleBottomPanel,
                 SecondRoutBottomPanel = SecondRoutBottomPanel,
-                SecondTitleBottomPanel = SecondTitleBottomPanel
+                SecondTitleBottomPanel = SecondTitleBottomPanel,
+                addNewWorkoutViewModel = addNewWorkoutViewModel
             )
         }
 
