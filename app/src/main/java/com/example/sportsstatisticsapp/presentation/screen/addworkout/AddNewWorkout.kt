@@ -1,5 +1,6 @@
 package com.example.sportsstatisticsapp.presentation.screen.addworkout
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -46,12 +47,12 @@ import com.example.sportsstatisticsapp.presentation.navigation.colorScreen
 import com.example.sportsstatisticsapp.presentation.navigation.parameterResource
 import com.example.sportsstatisticsapp.presentation.viewmodel.addviewmodel.AddNewWorkoutViewModel
 import com.example.sportsstatisticsapp.presentation.viewmodel.addviewmodel.ContractSavingEnteredDataMap
+import javax.inject.Inject
 
 
 @Composable
 fun AddNewWorkout(
     navController: NavHostController,
-    addNewWorkoutViewModel: AddNewWorkoutViewModel = viewModel()
 ) {
     Box(
         modifier = Modifier.fillMaxSize()
@@ -75,7 +76,6 @@ fun AddNewWorkout(
                     modifier = Modifier.width(290.dp),
                     spText = 22.sp,
                     rowID = NAME_THE_WORKOUT,
-                    addNewWorkoutViewModel = addNewWorkoutViewModel
 
                 )
             }
@@ -92,7 +92,6 @@ fun AddNewWorkout(
                     modifier = Modifier.weight(1f),
                     spText = 20.sp,
                     rowID = REPLAYS,
-                    addNewWorkoutViewModel = addNewWorkoutViewModel
                 )
                 Spacer(modifier = Modifier.width(15.dp))
                 NewWorkoutInputFields(
@@ -100,7 +99,6 @@ fun AddNewWorkout(
                     modifier = Modifier.weight(1f),
                     spText = 20.sp,
                     rowID = APPROACH,
-                    addNewWorkoutViewModel = addNewWorkoutViewModel
                 )
             }
 
@@ -116,7 +114,6 @@ fun AddNewWorkout(
                     modifier = Modifier.weight(1f),
                     spText = 20.sp,
                     rowID = ALL_TIME,
-                    addNewWorkoutViewModel = addNewWorkoutViewModel
                 )
 
                 Spacer(modifier = Modifier.width(15.dp))
@@ -126,7 +123,6 @@ fun AddNewWorkout(
                     modifier = Modifier.weight(1f),
                     spText = 15.sp,
                     rowID = TIME_APPROACH,
-                    addNewWorkoutViewModel = addNewWorkoutViewModel
                 )
             }
 
@@ -137,7 +133,6 @@ fun AddNewWorkout(
                 modifier = Modifier.width(150.dp),
                 spText = 20.sp,
                 rowID = DISTANCES,
-                addNewWorkoutViewModel = addNewWorkoutViewModel
             )
         }
 
@@ -158,8 +153,11 @@ fun NewWorkoutInputFields(
     modifier: Modifier = Modifier,
     spText: TextUnit,
     rowID: String,
-    addNewWorkoutViewModel: AddNewWorkoutViewModel
+    addNewWorkoutViewModel: AddNewWorkoutViewModel = viewModel(),
 ) {
+
+    Log.d("AAAA", "SET: $addNewWorkoutViewModel")
+
 
     var nameWorkout by rememberSaveable { mutableStateOf("") }
     val shapeParameter = parameterResource(15, 15, 15, 15)

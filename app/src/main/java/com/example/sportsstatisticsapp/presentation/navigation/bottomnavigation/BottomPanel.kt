@@ -22,7 +22,6 @@ fun BottomPanel (
     firstTitleBottomPanel: String,
     SecondRoutBottomPanel: String,
     SecondTitleBottomPanel: String,
-    addNewWorkoutViewModel: AddNewWorkoutViewModel? = null
 ){
     Box(){
         Row(
@@ -36,7 +35,7 @@ fun BottomPanel (
                 firstTitleBottomPanel = firstTitleBottomPanel,
                 SecondRoutBottomPanel = SecondRoutBottomPanel,
                 SecondTitleBottomPanel = SecondTitleBottomPanel,
-                addNewWorkoutViewModel = addNewWorkoutViewModel
+
             )
         }
 

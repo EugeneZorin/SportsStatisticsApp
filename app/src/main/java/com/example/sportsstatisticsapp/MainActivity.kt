@@ -6,7 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import com.example.sportsstatisticsapp.presentation.navigation.MainNavHost
 import com.example.sportsstatisticsapp.ui.theme.AppTheme
-
+import dagger.hilt.android.HiltAndroidApp
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

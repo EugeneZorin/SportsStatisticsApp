@@ -1,5 +1,6 @@
 package com.example.sportsstatisticsapp.presentation.navigation.bottomnavigation
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -21,6 +22,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.sportsstatisticsapp.presentation.constants.Constants.TITLE_SAVE
 import com.example.sportsstatisticsapp.presentation.navigation.bottomnavigation.buttoncontract.ButtonSaveContract
@@ -34,14 +36,15 @@ fun BottomNavigation(
     navController: NavHostController,
     currentRoute: String,
     navItems: SnapshotStateList<NavigationItems>,
-    addNewWorkoutViewModel: AddNewWorkoutViewModel? = null
+    addNewWorkoutViewModel: AddNewWorkoutViewModel = viewModel(),
 ) {
 
     val buttonSaveContract = object: ButtonSaveContract {
         override fun onButtonSave() {
-            addNewWorkoutViewModel?.onButtonSave()
+            addNewWorkoutViewModel.onButtonSave()
         }
     }
+
 
     Box(
         modifier = Modifier
