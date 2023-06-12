@@ -32,7 +32,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import com.example.sportsstatisticsapp.presentation.constants.Constants.TITLE_ADD_NEW_WORKOUT
 import com.example.sportsstatisticsapp.presentation.constants.Constants.TITLE_BACK
 import com.example.sportsstatisticsapp.presentation.constants.Constants.TITLE_SAVE
 import com.example.sportsstatisticsapp.presentation.constants.InputFieldConstants.ALL_TIME
@@ -46,7 +45,7 @@ import com.example.sportsstatisticsapp.presentation.navigation.bottomnavigation.
 import com.example.sportsstatisticsapp.presentation.navigation.colorScreen
 import com.example.sportsstatisticsapp.presentation.navigation.parameterResource
 import com.example.sportsstatisticsapp.presentation.viewmodel.addviewmodel.AddNewWorkoutViewModel
-import com.example.sportsstatisticsapp.presentation.viewmodel.addviewmodel.viewcontract.AddNewWorkoutContract
+import com.example.sportsstatisticsapp.presentation.viewmodel.addviewmodel.ContractSavingEnteredDataMap
 
 
 @Composable
@@ -166,8 +165,8 @@ fun NewWorkoutInputFields(
     val shapeParameter = parameterResource(15, 15, 15, 15)
 
     val contract = remember {
-        object : AddNewWorkoutContract {
-            override fun onAddNewWorkout(rowID: String, nameWorkout: String) {
+        object : ContractSavingEnteredDataMap {
+            override fun onSavingEnteredDataMap(rowID: String, nameWorkout: String) {
                 addNewWorkoutViewModel.addNewWorkout(rowID, nameWorkout)
             }
         }
@@ -189,7 +188,7 @@ fun NewWorkoutInputFields(
             value = nameWorkout,
             onValueChange = {
                 nameWorkout = it
-                contract.onAddNewWorkout(rowID, nameWorkout)
+                contract.onSavingEnteredDataMap(rowID, nameWorkout)
             },
             textStyle = TextStyle(
                 textAlign = TextAlign.Center, fontSize = spText, color = colorScheme.onSecondary
