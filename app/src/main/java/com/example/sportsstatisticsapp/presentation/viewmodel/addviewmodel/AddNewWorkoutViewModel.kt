@@ -19,7 +19,9 @@ class AddNewWorkoutViewModel @Inject constructor(
     }
     override fun onButtonSave() {
         viewModelScope.launch {
-            contractWorkoutDataImpl.workoutDataImpl("123", "32")
+            contractWorkoutDataImpl.workoutDataImpl(inputFieldMap)
         }
     }
 }
+
+

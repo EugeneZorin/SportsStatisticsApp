@@ -46,7 +46,7 @@ import com.example.sportsstatisticsapp.presentation.views.navigation.bottomnavig
 import com.example.sportsstatisticsapp.presentation.views.navigation.item.colorScreen
 import com.example.sportsstatisticsapp.presentation.views.navigation.item.parameterResource
 import com.example.sportsstatisticsapp.presentation.viewmodel.addviewmodel.AddNewWorkoutViewModel
-import com.example.sportsstatisticsapp.presentation.viewmodel.addviewmodel.ContractSavingEnteredDataMap
+import com.example.sportsstatisticsapp.presentation.contract.ContractSavingEnteredDataMap
 
 
 @Composable
@@ -154,11 +154,8 @@ fun NewWorkoutInputFields(
     spText: TextUnit,
     rowID: String,
 ) {
+
     val addNewWorkoutViewModel = hiltViewModel<AddNewWorkoutViewModel>()
-
-    Log.d("AAAA", "SET: $addNewWorkoutViewModel")
-
-
     var nameWorkout by rememberSaveable { mutableStateOf("") }
     val shapeParameter = parameterResource(15, 15, 15, 15)
 
