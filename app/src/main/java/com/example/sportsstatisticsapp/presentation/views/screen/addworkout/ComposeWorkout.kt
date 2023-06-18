@@ -17,7 +17,10 @@ import com.example.sportsstatisticsapp.presentation.views.navigation.bottomnavig
 import com.example.sportsstatisticsapp.presentation.views.navigation.item.colorScreen
 
 @Composable
-fun ComposeWorkout(navController: NavHostController) {
+fun ComposeWorkout(
+    navController: NavHostController
+) {
+
     Box(
         modifier = Modifier.fillMaxSize()
     ) {

@@ -5,6 +5,6 @@ import javax.inject.Inject
 
 class BuildWorkoutDistance @Inject constructor(): ContractDistanceWorkout {
     override fun contractDistanceWorkout(mapWorkout: MutableMap<String, String>) {
-        TODO("Not yet implemented")
+
     }
 }
