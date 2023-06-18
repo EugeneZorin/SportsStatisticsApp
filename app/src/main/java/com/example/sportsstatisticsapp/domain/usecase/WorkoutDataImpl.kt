@@ -15,16 +15,18 @@ import javax.inject.Inject
 
 class WorkoutDataImpl @Inject constructor(
     private val contractRegularWorkout: ContractRegularWorkout,
-    private val contractDistanceWorkout: ContractDistanceWorkout
-): ContractWorkoutDataImpl {
+    private val contractDistanceWorkout: ContractDistanceWorkout,
+) : ContractWorkoutDataImpl {
 
     private var result = COMPLETED_SUCCESSFULLY
     private val listFirstTrainingOption = listOf(NAME, REPLAYS, ALL_TIME)
     private val listSecondTrainingOption = listOf(NAME, DISTANCES, ALL_TIME)
     override fun workoutDataImpl(mapWorkout: MutableMap<String, String>): String {
 
-        val checkingFirstTrainingOption = listFirstTrainingOption.all { key -> mapWorkout.containsKey(key) }
-        val checkingSecondTrainingOption = listSecondTrainingOption.all { key -> mapWorkout.containsKey(key) }
+        val checkingFirstTrainingOption =
+            listFirstTrainingOption.all { key -> mapWorkout.containsKey(key) }
+        val checkingSecondTrainingOption =
+            listSecondTrainingOption.all { key -> mapWorkout.containsKey(key) }
 
         when {
 
@@ -41,6 +43,7 @@ class WorkoutDataImpl @Inject constructor(
             }
         }
 
+        Log.d("DDD", "SET: $result")
         return result
 
     }
