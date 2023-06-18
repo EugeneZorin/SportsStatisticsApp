@@ -19,22 +19,22 @@ class WorkoutDataImpl @Inject constructor(
 ) : ContractWorkoutDataImpl {
 
     private var result = COMPLETED_SUCCESSFULLY
-    private val listFirstTrainingOption = listOf(NAME, REPLAYS, ALL_TIME)
-    private val listSecondTrainingOption = listOf(NAME, DISTANCES, ALL_TIME)
+    private val minCriteriaRegularWorkout = listOf(NAME, REPLAYS, ALL_TIME)
+    private val minCriteriaDistanceWorkout = listOf(NAME, DISTANCES, ALL_TIME)
     override fun workoutDataImpl(mapWorkout: MutableMap<String, String>): String {
 
-        val checkingFirstTrainingOption =
-            listFirstTrainingOption.all { key -> mapWorkout.containsKey(key) }
-        val checkingSecondTrainingOption =
-            listSecondTrainingOption.all { key -> mapWorkout.containsKey(key) }
+        val checkingMinCriteriaRegularWorkout =
+            minCriteriaRegularWorkout.all { key -> mapWorkout.containsKey(key) }
+        val checkingMinCriteriaDistanceWorkout =
+            minCriteriaDistanceWorkout.all { key -> mapWorkout.containsKey(key) }
 
         when {
 
-            checkingFirstTrainingOption -> {
+            checkingMinCriteriaRegularWorkout -> {
                 contractRegularWorkout.contractRegularWorkout(mapWorkout)
             }
 
-            checkingSecondTrainingOption -> {
+            checkingMinCriteriaDistanceWorkout -> {
                 contractDistanceWorkout.contractDistanceWorkout(mapWorkout)
             }
 
@@ -42,8 +42,6 @@ class WorkoutDataImpl @Inject constructor(
                 result = ERROR
             }
         }
-
-        Log.d("DDD", "SET: $result")
         return result
 
     }

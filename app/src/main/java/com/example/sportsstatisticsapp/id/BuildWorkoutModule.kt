@@ -1,8 +1,10 @@
 package com.example.sportsstatisticsapp.id
 
+import com.example.sportsstatisticsapp.domain.repositories.buildworkout.ContractBuildWorkout
 import com.example.sportsstatisticsapp.domain.repositories.buildworkout.ContractDistanceWorkout
 import com.example.sportsstatisticsapp.domain.repositories.buildworkout.ContractRegularWorkout
 import com.example.sportsstatisticsapp.domain.usecase.buildworkout.BuildRegularWorkout
+import com.example.sportsstatisticsapp.domain.usecase.buildworkout.BuildWorkout
 import com.example.sportsstatisticsapp.domain.usecase.buildworkout.BuildWorkoutDistance
 import dagger.Binds
 import dagger.Module
@@ -18,4 +20,7 @@ abstract class BuildWorkoutModule {
 
     @Binds
     abstract fun bindsBuildDistanceWorkout(buildDistance: BuildWorkoutDistance): ContractDistanceWorkout
+
+    @Binds
+    abstract fun bindsBuildWorkout(buildWorkout: BuildWorkout): ContractBuildWorkout
 }
