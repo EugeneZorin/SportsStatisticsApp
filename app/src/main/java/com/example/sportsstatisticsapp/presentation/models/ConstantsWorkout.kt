@@ -1,7 +1,7 @@
 package com.example.sportsstatisticsapp.presentation.models
 
-object InputFieldConstants {
-    const val NAME_THE_WORKOUT = "name_the_workout"
+object ConstantsWorkout {
+    const val NAME = "name_the_workout"
     const val REPLAYS = "replays"
     const val APPROACH = "approach"
     const val ALL_TIME = "all_Time"

@@ -1,6 +1,5 @@
 package com.example.sportsstatisticsapp.presentation.views.screen.addworkout
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -33,20 +32,20 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.example.sportsstatisticsapp.presentation.contract.ContractSavingEnteredDataMap
 import com.example.sportsstatisticsapp.presentation.models.Constants.TITLE_BACK
 import com.example.sportsstatisticsapp.presentation.models.Constants.TITLE_SAVE
-import com.example.sportsstatisticsapp.presentation.models.InputFieldConstants.ALL_TIME
-import com.example.sportsstatisticsapp.presentation.models.InputFieldConstants.APPROACH
-import com.example.sportsstatisticsapp.presentation.models.InputFieldConstants.DISTANCES
-import com.example.sportsstatisticsapp.presentation.models.InputFieldConstants.NAME_THE_WORKOUT
-import com.example.sportsstatisticsapp.presentation.models.InputFieldConstants.REPLAYS
-import com.example.sportsstatisticsapp.presentation.models.InputFieldConstants.TIME_APPROACH
-import com.example.sportsstatisticsapp.presentation.views.navigation.item.Destination
+import com.example.sportsstatisticsapp.presentation.models.ConstantsWorkout.ALL_TIME
+import com.example.sportsstatisticsapp.presentation.models.ConstantsWorkout.APPROACH
+import com.example.sportsstatisticsapp.presentation.models.ConstantsWorkout.DISTANCES
+import com.example.sportsstatisticsapp.presentation.models.ConstantsWorkout.NAME
+import com.example.sportsstatisticsapp.presentation.models.ConstantsWorkout.REPLAYS
+import com.example.sportsstatisticsapp.presentation.models.ConstantsWorkout.TIME_APPROACH
+import com.example.sportsstatisticsapp.presentation.viewmodel.addviewmodel.AddNewWorkoutViewModel
 import com.example.sportsstatisticsapp.presentation.views.navigation.bottomnavigation.BottomPanel
+import com.example.sportsstatisticsapp.presentation.views.navigation.item.Destination
 import com.example.sportsstatisticsapp.presentation.views.navigation.item.colorScreen
 import com.example.sportsstatisticsapp.presentation.views.navigation.item.parameterResource
-import com.example.sportsstatisticsapp.presentation.viewmodel.addviewmodel.AddNewWorkoutViewModel
-import com.example.sportsstatisticsapp.presentation.contract.ContractSavingEnteredDataMap
 
 
 @Composable
@@ -75,7 +74,7 @@ fun AddNewWorkout(
                     textFieldLabel = "Name the workout",
                     modifier = Modifier.width(290.dp),
                     spText = 22.sp,
-                    rowID = NAME_THE_WORKOUT,
+                    rowID = NAME,
 
                     )
             }
