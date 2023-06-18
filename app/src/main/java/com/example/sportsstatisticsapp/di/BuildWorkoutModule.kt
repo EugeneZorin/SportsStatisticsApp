@@ -1,4 +1,4 @@
-package com.example.sportsstatisticsapp.id
+package com.example.sportsstatisticsapp.di
 
 import com.example.sportsstatisticsapp.domain.repositories.buildworkout.ContractBuildWorkout
 import com.example.sportsstatisticsapp.domain.repositories.buildworkout.ContractDistanceWorkout

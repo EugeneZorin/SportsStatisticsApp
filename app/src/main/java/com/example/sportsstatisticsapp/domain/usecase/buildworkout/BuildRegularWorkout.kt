@@ -12,10 +12,9 @@ class BuildRegularWorkout  @Inject constructor(
 ): ContractRegularWorkout {
 
     private val gson = Gson()
-    override fun contractRegularWorkout(mapWorkout: MutableMap<String, String>): WorkoutModel {
+    override fun contractRegularWorkout(mapWorkout: MutableMap<String, String>) {
         val constructedMap = contractBuildWorkout.contractBuildWorkout(mapWorkout)
         val json = gson.toJson(constructedMap)
-        Log.d("123", "SET: $json")
-        return gson.fromJson(json, WorkoutModel::class.java)
+        gson.fromJson(json, WorkoutModel::class.java)
     }
 }
