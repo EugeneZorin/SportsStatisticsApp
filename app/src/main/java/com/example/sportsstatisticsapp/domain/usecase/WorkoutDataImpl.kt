@@ -1,34 +1,36 @@
 package com.example.sportsstatisticsapp.domain.usecase
 
-import com.example.sportsstatisticsapp.domain.models.ConstantsWorkout.ALL_TIME
-import com.example.sportsstatisticsapp.domain.models.ConstantsWorkout.DISTANCES
-import com.example.sportsstatisticsapp.domain.models.ConstantsWorkout.NAME
-import com.example.sportsstatisticsapp.domain.models.ConstantsWorkout.REPLAYS
+import com.example.sportsstatisticsapp.domain.entities.Constants.COMPLETED_SUCCESSFULLY
+import com.example.sportsstatisticsapp.domain.entities.Constants.ERROR
+import com.example.sportsstatisticsapp.domain.entities.Constants.VOID
+import com.example.sportsstatisticsapp.domain.entities.ConstantsWorkout.ALL_TIME
+import com.example.sportsstatisticsapp.domain.entities.ConstantsWorkout.DISTANCES
+import com.example.sportsstatisticsapp.domain.entities.ConstantsWorkout.NAME
+import com.example.sportsstatisticsapp.domain.entities.ConstantsWorkout.REPLAYS
 import com.example.sportsstatisticsapp.domain.repositories.ContractWorkoutDataImpl
 import javax.inject.Inject
 
 class WorkoutDataImpl @Inject constructor(): ContractWorkoutDataImpl {
 
-
+    private var result = VOID
+    private val listFirstTrainingOption = listOf(NAME, REPLAYS, ALL_TIME)
+    private val listSecondTrainingOption = listOf(NAME, DISTANCES, ALL_TIME)
     override fun workoutDataImpl(mapWorkout: MutableMap<String, String>): String {
-
-        val result = "ERROR"
-
-        val listFirstTrainingOption = listOf(NAME, REPLAYS, ALL_TIME)
-        val listSecondTrainingOption = listOf(NAME, DISTANCES, ALL_TIME)
 
         val checkingFirstTrainingOption = listFirstTrainingOption.all { key -> mapWorkout.containsKey(key) }
         val checkingSecondTrainingOption = listSecondTrainingOption.all { key -> mapWorkout.containsKey(key) }
 
         when {
             checkingFirstTrainingOption -> {
-
+                COMPLETED_SUCCESSFULLY
             }
+
             checkingSecondTrainingOption -> {
-
+                COMPLETED_SUCCESSFULLY
             }
-            else -> {
 
+            else -> {
+                result = ERROR
             }
         }
 

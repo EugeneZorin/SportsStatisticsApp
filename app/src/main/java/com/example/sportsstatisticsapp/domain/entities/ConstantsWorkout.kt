@@ -1,4 +1,4 @@
-package com.example.sportsstatisticsapp.domain.models
+package com.example.sportsstatisticsapp.domain.entities
 
 object ConstantsWorkout {
     const val NAME = "name_the_workout"
