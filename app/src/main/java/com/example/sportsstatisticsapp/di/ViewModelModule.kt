@@ -1,7 +1,7 @@
 package com.example.sportsstatisticsapp.di
 
-import com.example.sportsstatisticsapp.domain.repositories.ContractWorkoutDataImpl
-import com.example.sportsstatisticsapp.domain.usecase.WorkoutDataImpl
+import com.example.sportsstatisticsapp.domain.repositories.ContractPresentationWorkoutData
+import com.example.sportsstatisticsapp.domain.usecase.PresentationWorkoutDataImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -14,6 +14,6 @@ abstract class ViewModelModule {
 
     @ViewModelScoped
     @Binds
-    abstract fun bindDataRepository(repository: WorkoutDataImpl): ContractWorkoutDataImpl
+    abstract fun bindDataRepository(repository: PresentationWorkoutDataImpl): ContractPresentationWorkoutData
 }
 

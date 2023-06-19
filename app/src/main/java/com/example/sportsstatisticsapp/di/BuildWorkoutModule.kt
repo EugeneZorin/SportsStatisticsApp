@@ -1,11 +1,10 @@
 package com.example.sportsstatisticsapp.di
 
 import com.example.sportsstatisticsapp.domain.repositories.buildworkout.ContractBuildWorkout
-import com.example.sportsstatisticsapp.domain.repositories.buildworkout.ContractDistanceWorkout
-import com.example.sportsstatisticsapp.domain.repositories.buildworkout.ContractRegularWorkout
-import com.example.sportsstatisticsapp.domain.usecase.buildworkout.BuildRegularWorkout
+import com.example.sportsstatisticsapp.domain.repositories.buildworkout.ContractWorkoutSupplements
+
 import com.example.sportsstatisticsapp.domain.usecase.buildworkout.BuildWorkout
-import com.example.sportsstatisticsapp.domain.usecase.buildworkout.BuildWorkoutDistance
+import com.example.sportsstatisticsapp.domain.usecase.buildworkout.WorkoutSupplements
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -16,11 +15,9 @@ import dagger.hilt.components.SingletonComponent
 abstract class BuildWorkoutModule {
 
     @Binds
-    abstract fun bindsBuildRegularWorkout(buildRegular: BuildRegularWorkout): ContractRegularWorkout
-
-    @Binds
-    abstract fun bindsBuildDistanceWorkout(buildDistance: BuildWorkoutDistance): ContractDistanceWorkout
-
-    @Binds
     abstract fun bindsBuildWorkout(buildWorkout: BuildWorkout): ContractBuildWorkout
+
+    @Binds
+    abstract fun bindsWorkoutSupplements(buildRegular: WorkoutSupplements): ContractWorkoutSupplements
+
 }
