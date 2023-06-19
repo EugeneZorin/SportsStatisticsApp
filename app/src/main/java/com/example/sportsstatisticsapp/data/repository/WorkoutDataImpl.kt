@@ -1,21 +1,24 @@
 package com.example.sportsstatisticsapp.data.repository
 
 
-import com.example.sportsstatisticsapp.data.models.WorkoutModel
+import android.util.Log
+import com.example.sportsstatisticsapp.data.models.WorkoutModelOne
+import com.example.sportsstatisticsapp.domain.entities.WorkoutModel
+
 import com.example.sportsstatisticsapp.domain.repositories.WorkoutDataRepository
+import javax.inject.Inject
 
-/*
-class WorkoutDataImpl(
-    private val workoutDAO: WorkoutDAO
-): WorkoutDataRepository{
+class WorkoutDataImpl @Inject constructor(): WorkoutDataRepository{
 
-    override suspend fun getWorkoutData(workoutData: WorkoutModel): WorkoutModel {
+
+
+    override fun getWorkoutData(workoutData: WorkoutModel): WorkoutModel {
         TODO("Not yet implemented")
     }
 
-    override suspend fun saveWorkoutData(workoutData: WorkoutModel) {
-        workoutDAO.saveWorkout(workoutData)
+    override fun saveWorkoutData(workoutData: com.example.sportsstatisticsapp.domain.entities.WorkoutModel) {
+
     }
 
 
-}*/
+}
