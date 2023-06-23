@@ -5,7 +5,6 @@ import com.example.sportsstatisticsapp.domain.entities.WorkoutModel
 import com.example.sportsstatisticsapp.domain.repositories.ContractGetWorkoutData
 import com.example.sportsstatisticsapp.domain.repositories.buildworkout.ContractBuildWorkout
 import com.example.sportsstatisticsapp.domain.repositories.buildworkout.ContractWorkoutSupplements
-import com.example.sportsstatisticsapp.domain.usecase.GetWorkoutDataUseCase
 import com.google.gson.Gson
 import javax.inject.Inject
 

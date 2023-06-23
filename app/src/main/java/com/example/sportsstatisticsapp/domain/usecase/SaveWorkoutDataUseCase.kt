@@ -5,11 +5,11 @@ import com.example.sportsstatisticsapp.domain.repositories.ContractGetWorkoutDat
 import com.example.sportsstatisticsapp.domain.repositories.WorkoutDataRepository
 import javax.inject.Inject
 
-class GetWorkoutDataUseCase @Inject constructor(
+class SaveWorkoutDataUseCase @Inject constructor(
     private val workoutDataRepository: WorkoutDataRepository
 ): ContractGetWorkoutData {
 
     override fun execute(workoutModel: WorkoutModel){
-        workoutDataRepository.saveWorkoutData(workoutModel)
+        workoutDataRepository.saveWorkoutData(workoutModel.toString())
     }
 }
