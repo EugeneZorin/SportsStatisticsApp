@@ -1,18 +1,9 @@
 package com.example.sportsstatisticsapp.data.room
 
 import androidx.room.Database
-import com.example.sportsstatisticsapp.data.models.WorkoutModel
+import androidx.room.RoomDatabase
 
-/*
-
-@Database(
-    version = 1,
-    entities = [
-        WorkoutDb::class
-    ]
-)
-abstract class WorkoutDatabase {
-
-    abstract fun getWorkoutDao(): WorkoutDAO
-
-}*/
+@Database(entities = [WorkoutEntity::class], version = 1)
+abstract class WorkoutDatabase: RoomDatabase() {
+    abstract fun workoutDao(): WorkoutDao
+}
